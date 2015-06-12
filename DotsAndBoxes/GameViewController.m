@@ -8,6 +8,7 @@
 
 #import "GameViewController.h"
 #import "GameScene.h"
+#import "BoardNode.h"
 
 @implementation SKScene (Unarchive)
 
@@ -33,6 +34,12 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
 
     // Configure the view.
     SKView * skView = (SKView *)self.view;
@@ -43,7 +50,13 @@
     
     // Create and configure the scene.
     GameScene *scene = [GameScene unarchiveFromFile:@"GameScene"];
-    scene.scaleMode = SKSceneScaleModeAspectFill;
+    scene.size = skView.frame.size;
+    scene.backgroundColor = [UIColor whiteColor];
+    
+
+    BoardNode *board = [[BoardNode alloc] initWithDimension:3 andBoardSize:scene.size];
+
+    [scene addChild:board];
     
     // Present the scene.
     [skView presentScene:scene];

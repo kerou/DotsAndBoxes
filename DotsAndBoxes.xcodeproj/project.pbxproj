@@ -16,6 +16,14 @@
 		931B31361B28456D0054105C /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 931B31351B28456D0054105C /* Images.xcassets */; };
 		931B31391B28456D0054105C /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 931B31371B28456D0054105C /* LaunchScreen.xib */; };
 		931B31451B28456D0054105C /* DotsAndBoxesTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 931B31441B28456D0054105C /* DotsAndBoxesTests.m */; };
+		931B31511B2847B50054105C /* Board.m in Sources */ = {isa = PBXBuildFile; fileRef = 931B31501B2847B50054105C /* Board.m */; };
+		931B31541B28494D0054105C /* Dot.m in Sources */ = {isa = PBXBuildFile; fileRef = 931B31531B28494D0054105C /* Dot.m */; };
+		931B318E1B2867EF0054105C /* DotSprite.m in Sources */ = {isa = PBXBuildFile; fileRef = 931B318D1B2867EF0054105C /* DotSprite.m */; };
+		931B31911B2868070054105C /* BoardNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 931B31901B2868070054105C /* BoardNode.m */; };
+		931B31941B2961000054105C /* Line.m in Sources */ = {isa = PBXBuildFile; fileRef = 931B31931B2961000054105C /* Line.m */; };
+		931B31971B29614E0054105C /* LineSprite.m in Sources */ = {isa = PBXBuildFile; fileRef = 931B31961B29614E0054105C /* LineSprite.m */; };
+		931B319B1B29A4B80054105C /* DotNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 931B319A1B29A4B80054105C /* DotNode.m */; };
+		931B319E1B29BD080054105C /* LineNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 931B319D1B29BD080054105C /* LineNode.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -45,6 +53,23 @@
 		931B313E1B28456D0054105C /* DotsAndBoxesTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DotsAndBoxesTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		931B31431B28456D0054105C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		931B31441B28456D0054105C /* DotsAndBoxesTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DotsAndBoxesTests.m; sourceTree = "<group>"; };
+		931B314F1B2847B50054105C /* Board.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Board.h; path = Logic/Board.h; sourceTree = "<group>"; };
+		931B31501B2847B50054105C /* Board.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Board.m; path = Logic/Board.m; sourceTree = "<group>"; };
+		931B31521B28494D0054105C /* Dot.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Dot.h; path = Logic/Dot.h; sourceTree = "<group>"; };
+		931B31531B28494D0054105C /* Dot.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Dot.m; path = Logic/Dot.m; sourceTree = "<group>"; };
+		931B31851B284EE00054105C /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
+		931B318C1B2867EF0054105C /* DotSprite.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DotSprite.h; path = UI/Sprites/DotSprite.h; sourceTree = "<group>"; };
+		931B318D1B2867EF0054105C /* DotSprite.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DotSprite.m; path = UI/Sprites/DotSprite.m; sourceTree = "<group>"; };
+		931B318F1B2868070054105C /* BoardNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BoardNode.h; path = UI/BoardNode.h; sourceTree = "<group>"; };
+		931B31901B2868070054105C /* BoardNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BoardNode.m; path = UI/BoardNode.m; sourceTree = "<group>"; };
+		931B31921B2961000054105C /* Line.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Line.h; path = Logic/Line.h; sourceTree = "<group>"; };
+		931B31931B2961000054105C /* Line.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Line.m; path = Logic/Line.m; sourceTree = "<group>"; };
+		931B31951B29614E0054105C /* LineSprite.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LineSprite.h; path = UI/Sprites/LineSprite.h; sourceTree = "<group>"; };
+		931B31961B29614E0054105C /* LineSprite.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LineSprite.m; path = UI/Sprites/LineSprite.m; sourceTree = "<group>"; };
+		931B31991B29A4B80054105C /* DotNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DotNode.h; path = UI/Nodes/DotNode.h; sourceTree = "<group>"; };
+		931B319A1B29A4B80054105C /* DotNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DotNode.m; path = UI/Nodes/DotNode.m; sourceTree = "<group>"; };
+		931B319C1B29BD080054105C /* LineNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LineNode.h; path = UI/Nodes/LineNode.h; sourceTree = "<group>"; };
+		931B319D1B29BD080054105C /* LineNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LineNode.m; path = UI/Nodes/LineNode.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -86,6 +111,9 @@
 		931B31221B28456D0054105C /* DotsAndBoxes */ = {
 			isa = PBXGroup;
 			children = (
+				931B31551B284D790054105C /* Libraries */,
+				931B314E1B2847980054105C /* Logic */,
+				931B318A1B2867DD0054105C /* UI */,
 				931B31271B28456D0054105C /* AppDelegate.h */,
 				931B31281B28456D0054105C /* AppDelegate.m */,
 				931B312A1B28456D0054105C /* GameScene.h */,
@@ -106,6 +134,7 @@
 			children = (
 				931B31241B28456D0054105C /* Info.plist */,
 				931B31251B28456D0054105C /* main.m */,
+				931B31851B284EE00054105C /* PrefixHeader.pch */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -125,6 +154,59 @@
 				931B31431B28456D0054105C /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		931B314E1B2847980054105C /* Logic */ = {
+			isa = PBXGroup;
+			children = (
+				931B314F1B2847B50054105C /* Board.h */,
+				931B31501B2847B50054105C /* Board.m */,
+				931B31521B28494D0054105C /* Dot.h */,
+				931B31531B28494D0054105C /* Dot.m */,
+				931B31921B2961000054105C /* Line.h */,
+				931B31931B2961000054105C /* Line.m */,
+			);
+			name = Logic;
+			sourceTree = "<group>";
+		};
+		931B31551B284D790054105C /* Libraries */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Libraries;
+			sourceTree = "<group>";
+		};
+		931B318A1B2867DD0054105C /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				931B31981B29A48C0054105C /* Nodes */,
+				931B318B1B2867E20054105C /* Sprites */,
+				931B318F1B2868070054105C /* BoardNode.h */,
+				931B31901B2868070054105C /* BoardNode.m */,
+			);
+			name = UI;
+			sourceTree = "<group>";
+		};
+		931B318B1B2867E20054105C /* Sprites */ = {
+			isa = PBXGroup;
+			children = (
+				931B318C1B2867EF0054105C /* DotSprite.h */,
+				931B318D1B2867EF0054105C /* DotSprite.m */,
+				931B31951B29614E0054105C /* LineSprite.h */,
+				931B31961B29614E0054105C /* LineSprite.m */,
+			);
+			name = Sprites;
+			sourceTree = "<group>";
+		};
+		931B31981B29A48C0054105C /* Nodes */ = {
+			isa = PBXGroup;
+			children = (
+				931B31991B29A4B80054105C /* DotNode.h */,
+				931B319A1B29A4B80054105C /* DotNode.m */,
+				931B319C1B29BD080054105C /* LineNode.h */,
+				931B319D1B29BD080054105C /* LineNode.m */,
+			);
+			name = Nodes;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -228,10 +310,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				931B31971B29614E0054105C /* LineSprite.m in Sources */,
+				931B319B1B29A4B80054105C /* DotNode.m in Sources */,
+				931B318E1B2867EF0054105C /* DotSprite.m in Sources */,
 				931B31311B28456D0054105C /* GameViewController.m in Sources */,
 				931B31291B28456D0054105C /* AppDelegate.m in Sources */,
 				931B312C1B28456D0054105C /* GameScene.m in Sources */,
+				931B31541B28494D0054105C /* Dot.m in Sources */,
+				931B31911B2868070054105C /* BoardNode.m in Sources */,
+				931B31941B2961000054105C /* Line.m in Sources */,
 				931B31261B28456D0054105C /* main.m in Sources */,
+				931B31511B2847B50054105C /* Board.m in Sources */,
+				931B319E1B29BD080054105C /* LineNode.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -353,6 +443,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = DotsAndBoxes/PrefixHeader.pch;
 				INFOPLIST_FILE = DotsAndBoxes/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -363,6 +455,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = DotsAndBoxes/PrefixHeader.pch;
 				INFOPLIST_FILE = DotsAndBoxes/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";

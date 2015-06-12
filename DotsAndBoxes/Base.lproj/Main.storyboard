@@ -1,25 +1,62 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6211" systemVersion="14A298i" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="LVB-YS-i5n">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6751" systemVersion="14C1514" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="dqU-O2-Npe">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6204"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6736"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--Game View Controller-->
         <scene sceneID="CtS-rA-C9T">
             <objects>
-                <viewController id="LVB-YS-i5n" customClass="GameViewController" customModuleProvider="" sceneMemberID="viewController">
+                <viewController id="LVB-YS-i5n" customClass="GameViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="PCf-gQ-wO7"/>
                         <viewControllerLayoutGuide type="bottom" id="b3d-qh-BLL"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="bdc-N1-crn" customClass="SKView">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="568" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="btX-cZ-eVz" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="1146.5" y="979.5"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="fEq-Oc-vJq">
+            <objects>
+                <viewController id="dqU-O2-Npe" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="bH4-Qd-GP7"/>
+                        <viewControllerLayoutGuide type="bottom" id="utN-rY-pR0"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="3L0-7k-ovS">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZDE-gi-f3M">
+                                <rect key="frame" x="16" y="32" width="568" height="568"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="ZDE-gi-f3M" secondAttribute="height" multiplier="1:1" id="cUI-VB-Yri"/>
+                                </constraints>
+                                <connections>
+                                    <segue destination="LVB-YS-i5n" kind="embed" id="wp6-4j-OQU"/>
+                                </connections>
+                            </containerView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="ZDE-gi-f3M" firstAttribute="top" secondItem="bH4-Qd-GP7" secondAttribute="bottom" constant="12" id="Nwf-op-rxG"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="ZDE-gi-f3M" secondAttribute="trailing" id="e5W-fz-fcH"/>
+                            <constraint firstItem="ZDE-gi-f3M" firstAttribute="leading" secondItem="3L0-7k-ovS" secondAttribute="leadingMargin" id="jv5-bj-VPP"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="49l-Rz-wBx" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="488" y="980"/>
         </scene>
     </scenes>
 </document>
