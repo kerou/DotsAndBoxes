@@ -7,12 +7,14 @@
 //
 
 #import "DotSprite.h"
+#import "LineNode.h"
 
-@interface DotNode : SKNode 
-
-@property(readwrite, nonatomic) BOOL enabled;
-
+@interface DotNode : SKNode
 @property(strong, nonatomic) DotSprite *dotSprite;
+@property(weak, nonatomic) LineNode *leftLine;
+@property(weak, nonatomic) LineNode *rightLine;
+@property(weak, nonatomic) LineNode *upLine;
+@property(weak, nonatomic) LineNode *downLine;
 @property(assign, nonatomic) CGFloat dotSize;
 @property(assign, nonatomic) NSUInteger row;
 @property(assign, nonatomic) NSUInteger column;

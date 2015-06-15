@@ -35,6 +35,7 @@
 {
     [super viewDidLoad];
     
+    self.isMe = YES;
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -54,8 +55,8 @@
     scene.backgroundColor = [UIColor whiteColor];
     
 
-    BoardNode *board = [[BoardNode alloc] initWithDimension:3 andBoardSize:scene.size];
-
+    BoardNode *board = [[BoardNode alloc] initWithDimension:5 andBoardSize:scene.size];
+    board.isMe = YES;
     [scene addChild:board];
     
     // Present the scene.

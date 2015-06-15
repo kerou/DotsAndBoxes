@@ -24,6 +24,7 @@
 		931B31971B29614E0054105C /* LineSprite.m in Sources */ = {isa = PBXBuildFile; fileRef = 931B31961B29614E0054105C /* LineSprite.m */; };
 		931B319B1B29A4B80054105C /* DotNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 931B319A1B29A4B80054105C /* DotNode.m */; };
 		931B319E1B29BD080054105C /* LineNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 931B319D1B29BD080054105C /* LineNode.m */; };
+		935012781B2ED9EC0047D79A /* BoxNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 935012771B2ED9EC0047D79A /* BoxNode.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -70,6 +71,8 @@
 		931B319A1B29A4B80054105C /* DotNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DotNode.m; path = UI/Nodes/DotNode.m; sourceTree = "<group>"; };
 		931B319C1B29BD080054105C /* LineNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LineNode.h; path = UI/Nodes/LineNode.h; sourceTree = "<group>"; };
 		931B319D1B29BD080054105C /* LineNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LineNode.m; path = UI/Nodes/LineNode.m; sourceTree = "<group>"; };
+		935012761B2ED9EC0047D79A /* BoxNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BoxNode.h; path = UI/Nodes/BoxNode.h; sourceTree = "<group>"; };
+		935012771B2ED9EC0047D79A /* BoxNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BoxNode.m; path = UI/Nodes/BoxNode.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -205,6 +208,8 @@
 				931B319A1B29A4B80054105C /* DotNode.m */,
 				931B319C1B29BD080054105C /* LineNode.h */,
 				931B319D1B29BD080054105C /* LineNode.m */,
+				935012761B2ED9EC0047D79A /* BoxNode.h */,
+				935012771B2ED9EC0047D79A /* BoxNode.m */,
 			);
 			name = Nodes;
 			sourceTree = "<group>";
@@ -313,6 +318,7 @@
 				931B31971B29614E0054105C /* LineSprite.m in Sources */,
 				931B319B1B29A4B80054105C /* DotNode.m in Sources */,
 				931B318E1B2867EF0054105C /* DotSprite.m in Sources */,
+				935012781B2ED9EC0047D79A /* BoxNode.m in Sources */,
 				931B31311B28456D0054105C /* GameViewController.m in Sources */,
 				931B31291B28456D0054105C /* AppDelegate.m in Sources */,
 				931B312C1B28456D0054105C /* GameScene.m in Sources */,
@@ -516,6 +522,7 @@
 				931B314A1B28456D0054105C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		931B314B1B28456D0054105C /* Build configuration list for PBXNativeTarget "DotsAndBoxesTests" */ = {
 			isa = XCConfigurationList;
@@ -524,6 +531,7 @@
 				931B314D1B28456D0054105C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

@@ -11,17 +11,8 @@
 
 @interface Dot : NSObject
 
-typedef NS_ENUM(NSUInteger, DotConnectionsState) {
-    DotNotConnected,
-    DotLeftConnected,
-    DotRightConnected,
-    DotUpConnected,
-    DotDownConnected
-};
-
 
 @property(strong, nonatomic) DotNode *dotNode;
-@property(assign, nonatomic) DotConnectionsState connectionsState;
 @property(assign, nonatomic) NSUInteger row;
 @property(assign, nonatomic) NSUInteger column;
 

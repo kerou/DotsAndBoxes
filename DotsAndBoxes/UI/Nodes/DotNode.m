@@ -12,7 +12,6 @@
 - (id)initWithSize:(CGFloat)size row:(NSUInteger)row andColumn:(NSUInteger)col
 {
     if(self = [super init]) {
-        self.enabled = YES;
         self.dotSize = size;
         self.row = row;
         self.column = col;
@@ -26,6 +25,11 @@
 - (CGPoint)calculatePosition
 {
     return CGPointMake(4*self.column*self.dotSize, 4*self.row*self.dotSize);
+}
+
+- (void)createBoxFromLine:(LineNode *)line
+{
+    
 }
 
 @end

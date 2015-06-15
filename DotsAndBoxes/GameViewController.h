@@ -10,5 +10,5 @@
 #import <SpriteKit/SpriteKit.h>
 
 @interface GameViewController : UIViewController
-
+@property(assign, nonatomic) BOOL isMe;
 @end

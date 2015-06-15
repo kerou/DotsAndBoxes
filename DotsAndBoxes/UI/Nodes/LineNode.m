@@ -7,21 +7,20 @@
 //
 
 #import "LineNode.h"
-
+#import "BoardNode.h"
 @implementation LineNode
 
-- (id)initWithDotNode:(DotNode *)firstDotNode andSecond:(DotNode *)secondDotNode
+- (id)initWithPosition:(CGPoint)position size:(CGFloat)lineSize andOrientation:(BOOL)isVertical;
 {
     if(self = [super init]) {
         self.userInteractionEnabled = YES;
-        self.firstDot = firstDotNode;
-        self.secondDot = secondDotNode;
-        self.lineSprite = [[LineSprite alloc] initWithSize:self.firstDot.dotSize];
-        if (self.firstDot.position.x == self.secondDot.position.x) {
-            self.position = CGPointMake(self.firstDot.position.x, self.firstDot.position.y + 2*self.firstDot.dotSize);
+        self.isVertical = isVertical;
+        self.lineSprite = [[LineSprite alloc] initWithSize:lineSize];
+        if (self.isVertical) {
+            self.position = CGPointMake(position.x, position.y + 2*lineSize);
             self.lineSprite.zRotation = M_PI_2;
         } else {
-            self.position = CGPointMake(self.firstDot.position.x + 2*self.firstDot.dotSize, self.firstDot.position.y);
+            self.position = CGPointMake(position.x + 2*lineSize, position.y);
         }
         [self addChild:self.lineSprite];
     }
@@ -29,21 +28,59 @@
 }
 
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
-    
-    UITouch *touch = [touches anyObject];
-    CGPoint touchLocation = [touch locationInNode:self];
-    SKNode *touchedNode = [self nodeAtPoint:touchLocation];
-    
-    if ([touch tapCount] == 1) {
-        NSLog(@"Crate node has been touched. Single tap.");
-        if(touchedNode.alpha == 0) {
-            SKAction *fadeIn = [SKAction fadeInWithDuration:.1];
-            [touchedNode runAction:fadeIn];
-        } else {
-            SKAction *fadeOut = [SKAction fadeOutWithDuration:.1];
-            [touchedNode runAction:fadeOut];
+    if(self.board.isMe) {
+        UITouch *touch = [touches anyObject];
+        CGPoint touchLocation = [touch locationInNode:self];
+        SKNode *touchedNode = [self nodeAtPoint:touchLocation];
+        
+        if ([touch tapCount] == 1) {
+            LineNode *lineNode = (LineNode *)touchedNode.parent;
+            if(touchedNode.alpha == 0) {
+                lineNode.isMine = YES;
+                lineNode.connected = YES;
+                SKAction *fadeIn = [SKAction fadeInWithDuration:.1];
+                [touchedNode runAction:fadeIn];
+            }
+//            } else {
+//                lineNode.isMine = YES;
+//                lineNode.connected = NO;
+//                SKAction *fadeOut = [SKAction fadeOutWithDuration:.1];
+//                [touchedNode runAction:fadeOut];
+//            }
         }
+//        self.board.isMe = NO;
     }
+//    } else {
+//        UITouch *touch = [touches anyObject];
+//        CGPoint touchLocation = [touch locationInNode:self];
+//        SKNode *touchedNode = [self nodeAtPoint:touchLocation];
+//        
+//        if ([touch tapCount] == 1) {
+//            LineNode *lineNode = (LineNode *)touchedNode.parent;
+//            lineNode.connected = YES;
+//            lineNode.isMine = NO;
+//            if(touchedNode.alpha == 0) {
+//                SKAction *fadeIn = [SKAction fadeInWithDuration:.1];
+//                [touchedNode runAction:fadeIn];
+//            } else {
+//                SKAction *fadeOut = [SKAction fadeOutWithDuration:.1];
+//                [touchedNode runAction:fadeOut];
+//            }
+//        }
+//        self.board.isMe = YES;
+//    }
+}
+
+- (void)setIsMine:(BOOL)isMine
+{
+    _isMine = isMine;
+    self.lineSprite.isMine = isMine;
+}
+
+- (void)setConnected:(BOOL)connected
+{
+    _connected = connected;
+    [self.board lineNode:self didChangeState:YES];
 }
 
 @end

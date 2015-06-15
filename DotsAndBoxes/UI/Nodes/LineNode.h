@@ -7,15 +7,19 @@
 //
 
 #import <SpriteKit/SpriteKit.h>
-#import "DotNode.h"
 #import "LineSprite.h"
+@class DotNode;
+@class BoardNode;
 
 @interface LineNode : SKNode
 
+@property(weak, nonatomic) DotNode *dot;
+@property(weak, nonatomic) BoardNode *board;
 @property(strong, nonatomic) LineSprite *lineSprite;
-@property(weak, nonatomic) DotNode *firstDot;
-@property(weak, nonatomic) DotNode *secondDot;
+@property(assign, nonatomic) BOOL isMine;
+@property(assign, nonatomic) BOOL isVertical;
+@property(assign, nonatomic) BOOL connected;
 
-- (id)initWithDotNode:(DotNode *)firstDotNode andSecond:(DotNode *)secondDotNode;
+- (id)initWithPosition:(CGPoint)position size:(CGFloat)lineSize andOrientation:(BOOL)isVertical;
 
 @end

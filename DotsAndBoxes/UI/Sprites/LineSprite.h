@@ -7,11 +7,9 @@
 //
 
 #import <SpriteKit/SpriteKit.h>
-#import "DotNode.h"
 
 @interface LineSprite : SKSpriteNode
-@property(readwrite, nonatomic) BOOL enabled;
-
+@property(assign, nonatomic) BOOL isMine;
 - (id)initWithSize:(CGFloat)dotSize;
 
 + (void)generatelineTextureWithSize:(CGFloat)size;
