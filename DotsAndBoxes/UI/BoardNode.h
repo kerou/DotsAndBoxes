@@ -13,7 +13,8 @@
 
 @property(assign, nonatomic) BOOL isMe;
 @property(assign, nonatomic) CGSize boardSize;
+@property(assign, nonatomic) NSUInteger allyBoxCount;
 
 - (id)initWithDimension:(NSUInteger)dimension andBoardSize:(CGSize)boardSize;
-- (void)lineNode:(LineNode *)line didChangeState :(BOOL)isConnected;
+- (BOOL)lineNode:(LineNode *)line didChangeState:(BOOL)isConnected;
 @end

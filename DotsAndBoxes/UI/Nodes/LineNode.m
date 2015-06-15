@@ -28,59 +28,26 @@
 }
 
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
-    if(self.board.isMe) {
-        UITouch *touch = [touches anyObject];
-        CGPoint touchLocation = [touch locationInNode:self];
-        SKNode *touchedNode = [self nodeAtPoint:touchLocation];
-        
-        if ([touch tapCount] == 1) {
-            LineNode *lineNode = (LineNode *)touchedNode.parent;
-            if(touchedNode.alpha == 0) {
-                lineNode.isMine = YES;
-                lineNode.connected = YES;
-                SKAction *fadeIn = [SKAction fadeInWithDuration:.1];
-                [touchedNode runAction:fadeIn];
-            }
-//            } else {
-//                lineNode.isMine = YES;
-//                lineNode.connected = NO;
-//                SKAction *fadeOut = [SKAction fadeOutWithDuration:.1];
-//                [touchedNode runAction:fadeOut];
-//            }
+    
+    UITouch *touch = [touches anyObject];
+    CGPoint touchLocation = [touch locationInNode:self];
+    SKNode *touchedNode = [self nodeAtPoint:touchLocation];
+    
+    if ([touch tapCount] == 1 && [touchedNode.parent isMemberOfClass:[LineNode class]]) {
+        LineNode *lineNode = (LineNode *)touchedNode.parent;
+        if(touchedNode.alpha == 0) {
+            lineNode.lineSprite.isMe = self.board.isMe;
+            lineNode.connected = YES;
         }
-//        self.board.isMe = NO;
     }
-//    } else {
-//        UITouch *touch = [touches anyObject];
-//        CGPoint touchLocation = [touch locationInNode:self];
-//        SKNode *touchedNode = [self nodeAtPoint:touchLocation];
-//        
-//        if ([touch tapCount] == 1) {
-//            LineNode *lineNode = (LineNode *)touchedNode.parent;
-//            lineNode.connected = YES;
-//            lineNode.isMine = NO;
-//            if(touchedNode.alpha == 0) {
-//                SKAction *fadeIn = [SKAction fadeInWithDuration:.1];
-//                [touchedNode runAction:fadeIn];
-//            } else {
-//                SKAction *fadeOut = [SKAction fadeOutWithDuration:.1];
-//                [touchedNode runAction:fadeOut];
-//            }
-//        }
-//        self.board.isMe = YES;
-//    }
-}
-
-- (void)setIsMine:(BOOL)isMine
-{
-    _isMine = isMine;
-    self.lineSprite.isMine = isMine;
+    SKAction *fadeIn = [SKAction fadeInWithDuration:.1];
+    [touchedNode runAction:fadeIn];
 }
 
 - (void)setConnected:(BOOL)connected
 {
     _connected = connected;
-    [self.board lineNode:self didChangeState:YES];
+    self.board.isMe = [self.board lineNode:self didChangeState:YES];
 }
 
 @end

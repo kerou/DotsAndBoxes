@@ -31,10 +31,10 @@ static SKTexture *lineTextureOpponent;
     return self;
 }
 
-- (void)setIsMine:(BOOL)isMine
+- (void)setIsMe:(BOOL)isMe
 {
-    _isMine = isMine;
-    if(isMine) {
+    _isMe = isMe;
+    if(isMe) {
         self.texture = lineTextureAlly;
     } else {
         self.texture = lineTextureOpponent;

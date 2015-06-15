@@ -80,52 +80,41 @@
     }
 }
 
-- (void)lineNode:(LineNode *)line didChangeState:(BOOL)isConnected
+- (BOOL)lineNode:(LineNode *)line didChangeState:(BOOL)isConnected
 {
     DotNode *dot = line.dot;
     if(line.isVertical) {
         if(dot.leftLine && dot.leftLine.connected) {
             DotNode *diagonalNode = self.dotNodes[dot.row + 1][dot.column - 1];
             if(diagonalNode.downLine && diagonalNode.downLine.connected && diagonalNode.rightLine && diagonalNode.rightLine.connected) {
-                if(line.isMine && dot.leftLine.isMine && diagonalNode.downLine.isMine && diagonalNode.rightLine.isMine) {
-                    [self createBox:dot diagonalDot:diagonalNode andPlayer:YES];
-                } else if(!line.isMine && !dot.leftLine.isMine && !diagonalNode.downLine.isMine && !diagonalNode.rightLine.isMine) {
-                    [self createBox:dot diagonalDot:diagonalNode andPlayer:NO];
-                }
+                [self createBox:dot diagonalDot:diagonalNode andPlayer:[self isMe]];
+                return self.isMe;
             }
         }
         if(dot.rightLine && dot.rightLine.connected) {
             DotNode *diagonalNode = self.dotNodes[dot.row + 1][dot.column + 1];
             if(diagonalNode.downLine && diagonalNode.downLine.connected && diagonalNode.leftLine && diagonalNode.leftLine.connected) {
-                if(line.isMine && dot.rightLine.isMine && diagonalNode.downLine.isMine && diagonalNode.leftLine.isMine) {
-                    [self createBox:dot diagonalDot:diagonalNode andPlayer:YES];
-                } else if(!line.isMine && !dot.rightLine.isMine && !diagonalNode.downLine.isMine && !diagonalNode.leftLine.isMine) {
-                    [self createBox:dot diagonalDot:diagonalNode andPlayer:NO];
-                }
+                [self createBox:dot diagonalDot:diagonalNode andPlayer:[self isMe]];
+                return self.isMe;
             }
         }
     } else {
         if(dot.upLine && dot.upLine.connected) {
             DotNode *diagonalNode = self.dotNodes[dot.row + 1][dot.column + 1];
             if(diagonalNode.leftLine && diagonalNode.leftLine.connected && diagonalNode.downLine && diagonalNode.downLine.connected) {
-                if(line.isMine && dot.upLine.isMine && diagonalNode.leftLine.isMine && diagonalNode.downLine.isMine) {
-                    [self createBox:dot diagonalDot:diagonalNode andPlayer:YES];
-                } else if(!line.isMine && !dot.upLine.isMine && !diagonalNode.leftLine.isMine && !diagonalNode.downLine.isMine) {
-                    [self createBox:dot diagonalDot:diagonalNode andPlayer:NO];
-                }
+                [self createBox:dot diagonalDot:diagonalNode andPlayer:[self isMe]];
+                return self.isMe;
             }
         }
         if(dot.downLine && dot.downLine.connected) {
             DotNode *diagonalNode = self.dotNodes[dot.row - 1][dot.column + 1];
             if(diagonalNode.upLine && diagonalNode.upLine.connected && diagonalNode.leftLine && diagonalNode.leftLine.connected) {
-                if(line.isMine && dot.downLine.isMine && diagonalNode.upLine.isMine && diagonalNode.leftLine.isMine) {
-                    [self createBox:dot diagonalDot:diagonalNode andPlayer:YES];
-                } else if(!line.isMine && !dot.downLine.isMine && !diagonalNode.upLine.isMine && !diagonalNode.leftLine.isMine) {
-                    [self createBox:dot diagonalDot:diagonalNode andPlayer:NO];
-                }
+                [self createBox:dot diagonalDot:diagonalNode andPlayer:[self isMe]];
+                return self.isMe;
             }
         }
     }
+    return !self.isMe;
 }
 
 - (void)createBox:(DotNode *)dot diagonalDot:(DotNode *)diagonalDot andPlayer:(BOOL)isMe
@@ -134,6 +123,7 @@
     CGSize size = CGSizeMake(boxSize, boxSize);
     SKSpriteNode *box = nil;
     if(isMe) {
+        self.allyBoxCount +=1;
         box = [SKSpriteNode spriteNodeWithColor:[UIColor brownColor] size:size];
     } else {
         box = [SKSpriteNode spriteNodeWithColor:[UIColor blueColor] size:size];
@@ -153,6 +143,7 @@
     }
     box.position = CGPointMake(dot.position.x+xOffset, dot.position.y+yOffset);
     box.alpha = 0;
+    box.zPosition = -2;
     [self addChild:box];
     SKAction *fadeIn = [SKAction fadeInWithDuration:.2];
     [box runAction:fadeIn];

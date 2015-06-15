@@ -16,7 +16,6 @@
 @property(weak, nonatomic) DotNode *dot;
 @property(weak, nonatomic) BoardNode *board;
 @property(strong, nonatomic) LineSprite *lineSprite;
-@property(assign, nonatomic) BOOL isMine;
 @property(assign, nonatomic) BOOL isVertical;
 @property(assign, nonatomic) BOOL connected;
 
