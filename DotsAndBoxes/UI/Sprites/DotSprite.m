@@ -20,7 +20,7 @@ static SKTexture *dotTexture;
         self.size = CGSizeMake(size,size);
 //        self.color = [UIColor redColor];
         self.texture = dotTexture;
-        SKSpriteNode *shaderSprite = [SKSpriteNode spriteNodeWithColor:[UIColor whiteColor] size:CGSizeMake(self.size.width-2, self.size.height-3)];
+//        SKSpriteNode *shaderSprite = [SKSpriteNode spriteNodeWithColor:[UIColor whiteColor] size:CGSizeMake(self.size.width-2, self.size.height-3)];
         SKShader* shader = [SKShader shaderWithFileNamed:@"blobs.fsh"];
         //Set vairiables that are used in the shader script
         shader.uniforms = @[
@@ -42,7 +42,7 @@ static SKTexture *dotTexture;
 {
     UIGraphicsBeginImageContext(CGSizeMake(size,size));
     CGContextRef ctx = UIGraphicsGetCurrentContext();
-    CGContextSetFillColorWithColor(ctx, [UIColor colorWithRed:.85 green:.84 blue:.83 alpha:1.0].CGColor);
+//    CGContextSetFillColorWithColor(ctx, [UIColor colorWithRed:.85 green:.84 blue:.83 alpha:1.0].CGColor);
 //    CGContextSetFillColorWithColor(ctx, [UIColor redColor].CGColor);
     CGContextFillRect(ctx, CGRectMake(0,0,size,size));
     CGRect holeRectIntersection = CGRectMake(0,0,size,size);

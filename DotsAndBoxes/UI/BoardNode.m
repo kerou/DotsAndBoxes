@@ -66,15 +66,6 @@
                 }
             }
         }
-        
-//        SKLightNode* light = [[SKLightNode alloc] init];
-//        light.categoryBitMask = 1;
-//        light.falloff = 1;
-//        light.ambientColor = [UIColor whiteColor];
-//        light.lightColor = [[UIColor alloc] initWithRed:1.0 green:1.0 blue:0.0 alpha:0.5];
-//        light.shadowColor = [[UIColor alloc] initWithRed:0.0 green:0.0 blue:0.0 alpha:0.3];
-//        light.position = CGPointMake(0, 0);
-//        [self addChild:light];
     }
     return self;
 }

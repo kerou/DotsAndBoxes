@@ -55,9 +55,9 @@
     scene.backgroundColor = [UIColor whiteColor];
     
 
-    BoardNode *board = [[BoardNode alloc] initWithDimension:2 andBoardSize:scene.size];
+    BoardNode *board = [[BoardNode alloc] initWithDimension:5 andBoardSize:scene.size];
     board.isMe = YES;
-    scene.backgroundColor = [UIColor colorWithRed:.85 green:.84 blue:.83 alpha:1.0];
+//    scene.backgroundColor = [UIColor colorWithRed:.85 green:.84 blue:.83 alpha:1.0];
     
 //    SKSpriteNode *shaderSprite = [SKSpriteNode spriteNodeWithColor:[UIColor whiteColor] size:scene.size];
 //    shaderSprite.size = scene.size;
