@@ -26,10 +26,4 @@
 {
     return CGPointMake(4*self.column*self.dotSize, 4*self.row*self.dotSize);
 }
-
-- (void)createBoxFromLine:(LineNode *)line
-{
-    
-}
-
 @end
