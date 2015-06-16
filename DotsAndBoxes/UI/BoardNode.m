@@ -15,6 +15,7 @@
 @property(assign, nonatomic) CGFloat circleDiameter;
 @property(assign, nonatomic) NSUInteger allBoxes;
 @property(strong, nonatomic) NSMutableArray *dotNodes;
+@property(strong, nonatomic) SKShader *dotShader;
 @end
 
 @implementation BoardNode
@@ -28,15 +29,21 @@
         self.allBoxes = (self.dimension - 1)*(self.dimension -1);
         self.circleDiameter = self.boardSize.width/(4*dimension-3);
         
+        // Textures
         [DotSprite generateDotTextureWithSize:self.circleDiameter];
         [LineSprite generatelineTextureWithSize:self.circleDiameter];
-    
+        
+        // Shaders
+        self.dotShader = [SKShader shaderWithFileNamed:@"blobs.fsh"];
+        [self.dotShader addUniform:[SKUniform uniformWithName:@"name" floatVector3:GLKVector3Make(self.circleDiameter, self.circleDiameter, 0)]];
+
         self.position = CGPointMake(self.circleDiameter/2, self.circleDiameter/2);
         
         for (int row=0; row<self.dimension; row++) {
             NSMutableArray *currentRow = [NSMutableArray new];
             for (int col=0; col<self.dimension; col++) {
                 DotNode *dot = [[DotNode alloc] initWithSize:self.circleDiameter row:row andColumn:col];
+                dot.dotSprite.shader = self.dotShader;
                 [self addChild:dot];
                 [currentRow addObject:dot];
             }
