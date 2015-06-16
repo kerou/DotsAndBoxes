@@ -37,17 +37,18 @@
         LineNode *lineNode = (LineNode *)touchedNode.parent;
         if(touchedNode.alpha == 0) {
             lineNode.lineSprite.isMe = self.board.isMe;
-            lineNode.connected = YES;
+            lineNode.connected = YES; 
+            SKAction *fadeIn = [SKAction fadeInWithDuration:.1];
+            [touchedNode runAction:fadeIn];
         }
     }
-    SKAction *fadeIn = [SKAction fadeInWithDuration:.1];
-    [touchedNode runAction:fadeIn];
+    
 }
 
 - (void)setConnected:(BOOL)connected
 {
     _connected = connected;
-    self.board.isMe = [self.board lineNode:self didChangeState:YES];
+    [self.board lineNode:self didChangeState:YES];
 }
 
 @end

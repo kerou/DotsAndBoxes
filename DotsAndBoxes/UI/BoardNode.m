@@ -66,6 +66,15 @@
                 }
             }
         }
+        
+//        SKLightNode* light = [[SKLightNode alloc] init];
+//        light.categoryBitMask = 1;
+//        light.falloff = 1;
+//        light.ambientColor = [UIColor whiteColor];
+//        light.lightColor = [[UIColor alloc] initWithRed:1.0 green:1.0 blue:0.0 alpha:0.5];
+//        light.shadowColor = [[UIColor alloc] initWithRed:0.0 green:0.0 blue:0.0 alpha:0.3];
+//        light.position = CGPointMake(0, 0);
+//        [self addChild:light];
     }
     return self;
 }
@@ -80,22 +89,23 @@
     }
 }
 
-- (BOOL)lineNode:(LineNode *)line didChangeState:(BOOL)isConnected
+- (void)lineNode:(LineNode *)line didChangeState:(BOOL)isConnected
 {
     DotNode *dot = line.dot;
+    BOOL shouldChangePlayer = YES;
     if(line.isVertical) {
         if(dot.leftLine && dot.leftLine.connected) {
             DotNode *diagonalNode = self.dotNodes[dot.row + 1][dot.column - 1];
             if(diagonalNode.downLine && diagonalNode.downLine.connected && diagonalNode.rightLine && diagonalNode.rightLine.connected) {
                 [self createBox:dot diagonalDot:diagonalNode andPlayer:[self isMe]];
-                return self.isMe;
+                shouldChangePlayer = NO;
             }
         }
         if(dot.rightLine && dot.rightLine.connected) {
             DotNode *diagonalNode = self.dotNodes[dot.row + 1][dot.column + 1];
             if(diagonalNode.downLine && diagonalNode.downLine.connected && diagonalNode.leftLine && diagonalNode.leftLine.connected) {
                 [self createBox:dot diagonalDot:diagonalNode andPlayer:[self isMe]];
-                return self.isMe;
+                shouldChangePlayer = NO;
             }
         }
     } else {
@@ -103,18 +113,18 @@
             DotNode *diagonalNode = self.dotNodes[dot.row + 1][dot.column + 1];
             if(diagonalNode.leftLine && diagonalNode.leftLine.connected && diagonalNode.downLine && diagonalNode.downLine.connected) {
                 [self createBox:dot diagonalDot:diagonalNode andPlayer:[self isMe]];
-                return self.isMe;
+                shouldChangePlayer = NO;
             }
         }
         if(dot.downLine && dot.downLine.connected) {
             DotNode *diagonalNode = self.dotNodes[dot.row - 1][dot.column + 1];
             if(diagonalNode.upLine && diagonalNode.upLine.connected && diagonalNode.leftLine && diagonalNode.leftLine.connected) {
                 [self createBox:dot diagonalDot:diagonalNode andPlayer:[self isMe]];
-                return self.isMe;
+                shouldChangePlayer = NO;
             }
         }
     }
-    return !self.isMe;
+    self.isMe = shouldChangePlayer? !self.isMe:self.isMe;
 }
 
 - (void)createBox:(DotNode *)dot diagonalDot:(DotNode *)diagonalDot andPlayer:(BOOL)isMe
@@ -124,9 +134,9 @@
     SKSpriteNode *box = nil;
     if(isMe) {
         self.allyBoxCount +=1;
-        box = [SKSpriteNode spriteNodeWithColor:[UIColor brownColor] size:size];
+        box = [SKSpriteNode spriteNodeWithColor:[UIColor colorWithRed:.87 green:.50 blue:.35 alpha:1.] size:size];
     } else {
-        box = [SKSpriteNode spriteNodeWithColor:[UIColor blueColor] size:size];
+        box = [SKSpriteNode spriteNodeWithColor:[UIColor colorWithRed:.23 green:.62 blue:.73 alpha:1.] size:size];
     }
     
     CGFloat xOffset = 0;

@@ -25,6 +25,10 @@
 		931B319B1B29A4B80054105C /* DotNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 931B319A1B29A4B80054105C /* DotNode.m */; };
 		931B319E1B29BD080054105C /* LineNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 931B319D1B29BD080054105C /* LineNode.m */; };
 		935012781B2ED9EC0047D79A /* BoxNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 935012771B2ED9EC0047D79A /* BoxNode.m */; };
+		9350127B1B3016640047D79A /* waves.fsh in Resources */ = {isa = PBXBuildFile; fileRef = 9350127A1B3016640047D79A /* waves.fsh */; };
+		93D1FCE91B301F90000A0603 /* ether.fsh in Resources */ = {isa = PBXBuildFile; fileRef = 93D1FCE81B301F90000A0603 /* ether.fsh */; };
+		93D1FCEB1B302749000A0603 /* galaxy.fsh in Resources */ = {isa = PBXBuildFile; fileRef = 93D1FCEA1B302749000A0603 /* galaxy.fsh */; };
+		93D1FCED1B3040F6000A0603 /* blobs.fsh in Resources */ = {isa = PBXBuildFile; fileRef = 93D1FCEC1B3040F6000A0603 /* blobs.fsh */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -73,6 +77,10 @@
 		931B319D1B29BD080054105C /* LineNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LineNode.m; path = UI/Nodes/LineNode.m; sourceTree = "<group>"; };
 		935012761B2ED9EC0047D79A /* BoxNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BoxNode.h; path = UI/Nodes/BoxNode.h; sourceTree = "<group>"; };
 		935012771B2ED9EC0047D79A /* BoxNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BoxNode.m; path = UI/Nodes/BoxNode.m; sourceTree = "<group>"; };
+		9350127A1B3016640047D79A /* waves.fsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; name = waves.fsh; path = UI/Shaders/waves.fsh; sourceTree = "<group>"; };
+		93D1FCE81B301F90000A0603 /* ether.fsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; name = ether.fsh; path = UI/Shaders/ether.fsh; sourceTree = "<group>"; };
+		93D1FCEA1B302749000A0603 /* galaxy.fsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; name = galaxy.fsh; path = UI/Shaders/galaxy.fsh; sourceTree = "<group>"; };
+		93D1FCEC1B3040F6000A0603 /* blobs.fsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; name = blobs.fsh; path = UI/Shaders/blobs.fsh; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -182,6 +190,7 @@
 		931B318A1B2867DD0054105C /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				935012791B3015E80047D79A /* Shaders */,
 				931B31981B29A48C0054105C /* Nodes */,
 				931B318B1B2867E20054105C /* Sprites */,
 				931B318F1B2868070054105C /* BoardNode.h */,
@@ -212,6 +221,17 @@
 				935012771B2ED9EC0047D79A /* BoxNode.m */,
 			);
 			name = Nodes;
+			sourceTree = "<group>";
+		};
+		935012791B3015E80047D79A /* Shaders */ = {
+			isa = PBXGroup;
+			children = (
+				9350127A1B3016640047D79A /* waves.fsh */,
+				93D1FCE81B301F90000A0603 /* ether.fsh */,
+				93D1FCEA1B302749000A0603 /* galaxy.fsh */,
+				93D1FCEC1B3040F6000A0603 /* blobs.fsh */,
+			);
+			name = Shaders;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -294,10 +314,14 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				93D1FCEB1B302749000A0603 /* galaxy.fsh in Resources */,
+				9350127B1B3016640047D79A /* waves.fsh in Resources */,
+				93D1FCED1B3040F6000A0603 /* blobs.fsh in Resources */,
 				931B31391B28456D0054105C /* LaunchScreen.xib in Resources */,
 				931B31361B28456D0054105C /* Images.xcassets in Resources */,
 				931B312E1B28456D0054105C /* GameScene.sks in Resources */,
 				931B31341B28456D0054105C /* Main.storyboard in Resources */,
+				93D1FCE91B301F90000A0603 /* ether.fsh in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -452,8 +476,10 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = DotsAndBoxes/PrefixHeader.pch;
 				INFOPLIST_FILE = DotsAndBoxes/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = 2;
 			};
 			name = Debug;
 		};
@@ -464,8 +490,10 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = DotsAndBoxes/PrefixHeader.pch;
 				INFOPLIST_FILE = DotsAndBoxes/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = 2;
 			};
 			name = Release;
 		};

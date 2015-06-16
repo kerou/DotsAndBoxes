@@ -16,5 +16,5 @@
 @property(assign, nonatomic) NSUInteger allyBoxCount;
 
 - (id)initWithDimension:(NSUInteger)dimension andBoardSize:(CGSize)boardSize;
-- (BOOL)lineNode:(LineNode *)line didChangeState:(BOOL)isConnected;
+- (void)lineNode:(LineNode *)line didChangeState:(BOOL)isConnected;
 @end
