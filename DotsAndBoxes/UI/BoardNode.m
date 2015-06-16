@@ -43,7 +43,7 @@
             NSMutableArray *currentRow = [NSMutableArray new];
             for (int col=0; col<self.dimension; col++) {
                 DotNode *dot = [[DotNode alloc] initWithSize:self.circleDiameter row:row andColumn:col];
-                dot.dotSprite.shader = self.dotShader;
+//                dot.dotSprite.shader = self.dotShader;
                 [self addChild:dot];
                 [currentRow addObject:dot];
             }
@@ -53,8 +53,9 @@
         for (NSMutableArray *row in self.dotNodes) {
             for (DotNode *dot in row) {
                 if (dot != [row lastObject]) {
+                    NSLog(@"%ld", [row indexOfObject:dot]);
                     DotNode *secondDot = row[[row indexOfObject:dot]+1];
-                    LineNode *line = [[LineNode alloc] initWithPosition:dot.position size:dot.dotSize andOrientation:NO];
+                    LineNode *line = [[LineNode alloc] initWithPosition:dot.dotSprite.position size:dot.dotSize andOrientation:NO];
                     line.dot = dot;
                     line.board = self;
                     dot.rightLine = line;
@@ -64,7 +65,7 @@
                 if (row != [self.dotNodes lastObject]) {
                     NSMutableArray *upperRow = self.dotNodes[[self.dotNodes indexOfObject:row] + 1];
                     DotNode *upperDot = upperRow[[row indexOfObject:dot]];
-                    LineNode *line = [[LineNode alloc] initWithPosition:dot.position size:dot.dotSize andOrientation:YES];
+                    LineNode *line = [[LineNode alloc] initWithPosition:dot.dotSprite.position size:dot.dotSize andOrientation:YES];
                     dot.upLine = line;
                     line.dot = dot;
                     line.board = self;
@@ -127,7 +128,7 @@
 
 - (void)createBox:(DotNode *)dot diagonalDot:(DotNode *)diagonalDot andPlayer:(BOOL)isMe
 {
-    CGFloat boxSize = fabs(dot.position.x - diagonalDot.position.x);
+    CGFloat boxSize = fabs(dot.dotSprite.position.x - diagonalDot.dotSprite.position.x);
     CGSize size = CGSizeMake(boxSize, boxSize);
     SKSpriteNode *box = nil;
     if(isMe) {
@@ -139,17 +140,17 @@
     
     CGFloat xOffset = 0;
     CGFloat yOffset = 0;
-    if(dot.position.x < diagonalDot.position.x) {
+    if(dot.dotSprite.position.x < diagonalDot.dotSprite.position.x) {
         xOffset+=size.width/2;
     } else {
         xOffset-=size.width/2;
     }
-    if(dot.position.y < diagonalDot.position.y) {
+    if(dot.dotSprite.position.y < diagonalDot.dotSprite.position.y) {
         yOffset+=size.width/2;
     } else {
         yOffset-=size.width/2;
     }
-    box.position = CGPointMake(dot.position.x+xOffset, dot.position.y+yOffset);
+    box.position = CGPointMake(dot.dotSprite.position.x+xOffset, dot.dotSprite.position.y+yOffset);
     box.alpha = 0;
     box.zPosition = -2;
     [self addChild:box];

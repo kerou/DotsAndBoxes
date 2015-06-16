@@ -17,10 +17,10 @@
         self.isVertical = isVertical;
         self.lineSprite = [[LineSprite alloc] initWithSize:lineSize];
         if (self.isVertical) {
-            self.position = CGPointMake(position.x, position.y + 2*lineSize);
+            self.lineSprite.position = CGPointMake(position.x, position.y + 2*lineSize);
             self.lineSprite.zRotation = M_PI_2;
         } else {
-            self.position = CGPointMake(position.x + 2*lineSize, position.y);
+            self.lineSprite.position = CGPointMake(position.x + 2*lineSize, position.y);
         }
         [self addChild:self.lineSprite];
     }

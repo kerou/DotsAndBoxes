@@ -15,8 +15,9 @@
         self.dotSize = size;
         self.row = row;
         self.column = col;
-        self.position = [self calculatePosition];
+//        self.position = [self calculatePosition];
         self.dotSprite = [[DotSprite alloc] initWithSize:self.dotSize];
+        self.dotSprite.position = [self calculatePosition];
         [self addChild:self.dotSprite];
     }
     return self;
