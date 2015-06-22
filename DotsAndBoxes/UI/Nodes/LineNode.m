@@ -32,14 +32,15 @@
     UITouch *touch = [touches anyObject];
     CGPoint touchLocation = [touch locationInNode:self];
     SKNode *touchedNode = [self nodeAtPoint:touchLocation];
-    
-    if ([touch tapCount] == 1 && [touchedNode.parent isMemberOfClass:[LineNode class]]) {
+    if ([touchedNode.parent isMemberOfClass:[LineNode class]]) {
         LineNode *lineNode = (LineNode *)touchedNode.parent;
-        if(touchedNode.alpha == 0) {
-            lineNode.lineSprite.isMe = self.board.isMe;
-            lineNode.connected = YES; 
-            SKAction *fadeIn = [SKAction fadeInWithDuration:.1];
-            [touchedNode runAction:fadeIn];
+        if(!lineNode.connected) {
+            if(touchedNode.alpha == 0) {
+                lineNode.lineSprite.isMe = self.board.isMe;
+                lineNode.connected = YES; 
+                SKAction *fadeIn = [SKAction fadeInWithDuration:0.1];
+                [touchedNode runAction:fadeIn];
+            }
         }
     }
     

@@ -26,6 +26,25 @@
 		931B319E1B29BD080054105C /* LineNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 931B319D1B29BD080054105C /* LineNode.m */; };
 		935012781B2ED9EC0047D79A /* BoxNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 935012771B2ED9EC0047D79A /* BoxNode.m */; };
 		9350127B1B3016640047D79A /* waves.fsh in Resources */ = {isa = PBXBuildFile; fileRef = 9350127A1B3016640047D79A /* waves.fsh */; };
+		9363E61F1B381BA8000E0884 /* DBLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9363E61E1B381BA8000E0884 /* DBLoginViewController.m */; };
+		9363E6251B38453B000E0884 /* DBPlayersTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9363E6241B38453B000E0884 /* DBPlayersTableViewController.m */; };
+		93AF6C981B318A0D003FC314 /* dancing_box.fsh in Resources */ = {isa = PBXBuildFile; fileRef = 93AF6C971B318A0D003FC314 /* dancing_box.fsh */; };
+		93AF6C9A1B31923C003FC314 /* spectrum_wave.fsh in Resources */ = {isa = PBXBuildFile; fileRef = 93AF6C991B31923C003FC314 /* spectrum_wave.fsh */; };
+		93AF6C9C1B319946003FC314 /* sinusoid.fsh in Resources */ = {isa = PBXBuildFile; fileRef = 93AF6C9B1B319946003FC314 /* sinusoid.fsh */; };
+		93AF6C9E1B31A4F7003FC314 /* eclipse.fsh in Resources */ = {isa = PBXBuildFile; fileRef = 93AF6C9D1B31A4F7003FC314 /* eclipse.fsh */; };
+		93B1D8B21B37FFA9007C507B /* SocketAckManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93B1D8A51B37FFA9007C507B /* SocketAckManager.swift */; };
+		93B1D8B31B37FFA9007C507B /* SocketAnyEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93B1D8A61B37FFA9007C507B /* SocketAnyEvent.swift */; };
+		93B1D8B41B37FFA9007C507B /* SocketEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93B1D8A71B37FFA9007C507B /* SocketEngine.swift */; };
+		93B1D8B51B37FFA9007C507B /* SocketEngineClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93B1D8A81B37FFA9007C507B /* SocketEngineClient.swift */; };
+		93B1D8B61B37FFA9007C507B /* SocketEventHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93B1D8A91B37FFA9007C507B /* SocketEventHandler.swift */; };
+		93B1D8B71B37FFA9007C507B /* SocketFixUTF8.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93B1D8AA1B37FFA9007C507B /* SocketFixUTF8.swift */; };
+		93B1D8B81B37FFA9007C507B /* SocketIOClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93B1D8AB1B37FFA9007C507B /* SocketIOClient.swift */; };
+		93B1D8B91B37FFA9007C507B /* SocketLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93B1D8AC1B37FFA9007C507B /* SocketLogger.swift */; };
+		93B1D8BA1B37FFA9007C507B /* SocketPacket.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93B1D8AD1B37FFA9007C507B /* SocketPacket.swift */; };
+		93B1D8BB1B37FFA9007C507B /* SocketParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93B1D8AE1B37FFA9007C507B /* SocketParser.swift */; };
+		93B1D8BC1B37FFA9007C507B /* SocketTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93B1D8AF1B37FFA9007C507B /* SocketTypes.swift */; };
+		93B1D8BD1B37FFA9007C507B /* SwiftRegex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93B1D8B01B37FFA9007C507B /* SwiftRegex.swift */; };
+		93B1D8BE1B37FFA9007C507B /* WebSocket.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93B1D8B11B37FFA9007C507B /* WebSocket.swift */; };
 		93D1FCE91B301F90000A0603 /* ether.fsh in Resources */ = {isa = PBXBuildFile; fileRef = 93D1FCE81B301F90000A0603 /* ether.fsh */; };
 		93D1FCEB1B302749000A0603 /* galaxy.fsh in Resources */ = {isa = PBXBuildFile; fileRef = 93D1FCEA1B302749000A0603 /* galaxy.fsh */; };
 		93D1FCED1B3040F6000A0603 /* blobs.fsh in Resources */ = {isa = PBXBuildFile; fileRef = 93D1FCEC1B3040F6000A0603 /* blobs.fsh */; };
@@ -78,6 +97,27 @@
 		935012761B2ED9EC0047D79A /* BoxNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BoxNode.h; path = UI/Nodes/BoxNode.h; sourceTree = "<group>"; };
 		935012771B2ED9EC0047D79A /* BoxNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BoxNode.m; path = UI/Nodes/BoxNode.m; sourceTree = "<group>"; };
 		9350127A1B3016640047D79A /* waves.fsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; name = waves.fsh; path = UI/Shaders/waves.fsh; sourceTree = "<group>"; };
+		9363E61D1B381BA8000E0884 /* DBLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DBLoginViewController.h; path = UI/ViewControllers/DBLoginViewController.h; sourceTree = "<group>"; };
+		9363E61E1B381BA8000E0884 /* DBLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DBLoginViewController.m; path = UI/ViewControllers/DBLoginViewController.m; sourceTree = "<group>"; };
+		9363E6231B38453B000E0884 /* DBPlayersTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DBPlayersTableViewController.h; path = UI/ViewControllers/DBPlayersTableViewController.h; sourceTree = "<group>"; };
+		9363E6241B38453B000E0884 /* DBPlayersTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DBPlayersTableViewController.m; path = UI/ViewControllers/DBPlayersTableViewController.m; sourceTree = "<group>"; };
+		93AF6C971B318A0D003FC314 /* dancing_box.fsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; name = dancing_box.fsh; path = UI/Shaders/dancing_box.fsh; sourceTree = "<group>"; };
+		93AF6C991B31923C003FC314 /* spectrum_wave.fsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; name = spectrum_wave.fsh; path = UI/Shaders/spectrum_wave.fsh; sourceTree = "<group>"; };
+		93AF6C9B1B319946003FC314 /* sinusoid.fsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; name = sinusoid.fsh; path = UI/Shaders/sinusoid.fsh; sourceTree = "<group>"; };
+		93AF6C9D1B31A4F7003FC314 /* eclipse.fsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; name = eclipse.fsh; path = UI/Shaders/eclipse.fsh; sourceTree = "<group>"; };
+		93B1D8A51B37FFA9007C507B /* SocketAckManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SocketAckManager.swift; sourceTree = "<group>"; };
+		93B1D8A61B37FFA9007C507B /* SocketAnyEvent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SocketAnyEvent.swift; sourceTree = "<group>"; };
+		93B1D8A71B37FFA9007C507B /* SocketEngine.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SocketEngine.swift; sourceTree = "<group>"; };
+		93B1D8A81B37FFA9007C507B /* SocketEngineClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SocketEngineClient.swift; sourceTree = "<group>"; };
+		93B1D8A91B37FFA9007C507B /* SocketEventHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SocketEventHandler.swift; sourceTree = "<group>"; };
+		93B1D8AA1B37FFA9007C507B /* SocketFixUTF8.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SocketFixUTF8.swift; sourceTree = "<group>"; };
+		93B1D8AB1B37FFA9007C507B /* SocketIOClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SocketIOClient.swift; sourceTree = "<group>"; };
+		93B1D8AC1B37FFA9007C507B /* SocketLogger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SocketLogger.swift; sourceTree = "<group>"; };
+		93B1D8AD1B37FFA9007C507B /* SocketPacket.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SocketPacket.swift; sourceTree = "<group>"; };
+		93B1D8AE1B37FFA9007C507B /* SocketParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SocketParser.swift; sourceTree = "<group>"; };
+		93B1D8AF1B37FFA9007C507B /* SocketTypes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SocketTypes.swift; sourceTree = "<group>"; };
+		93B1D8B01B37FFA9007C507B /* SwiftRegex.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftRegex.swift; sourceTree = "<group>"; };
+		93B1D8B11B37FFA9007C507B /* WebSocket.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebSocket.swift; sourceTree = "<group>"; };
 		93D1FCE81B301F90000A0603 /* ether.fsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; name = ether.fsh; path = UI/Shaders/ether.fsh; sourceTree = "<group>"; };
 		93D1FCEA1B302749000A0603 /* galaxy.fsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; name = galaxy.fsh; path = UI/Shaders/galaxy.fsh; sourceTree = "<group>"; };
 		93D1FCEC1B3040F6000A0603 /* blobs.fsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; name = blobs.fsh; path = UI/Shaders/blobs.fsh; sourceTree = "<group>"; };
@@ -183,6 +223,7 @@
 		931B31551B284D790054105C /* Libraries */ = {
 			isa = PBXGroup;
 			children = (
+				93B1D8A41B37FFA9007C507B /* SocketIOClientSwift */,
 			);
 			name = Libraries;
 			sourceTree = "<group>";
@@ -190,6 +231,7 @@
 		931B318A1B2867DD0054105C /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				9363E61C1B381B75000E0884 /* ViewControllers */,
 				935012791B3015E80047D79A /* Shaders */,
 				931B31981B29A48C0054105C /* Nodes */,
 				931B318B1B2867E20054105C /* Sprites */,
@@ -230,8 +272,44 @@
 				93D1FCE81B301F90000A0603 /* ether.fsh */,
 				93D1FCEA1B302749000A0603 /* galaxy.fsh */,
 				93D1FCEC1B3040F6000A0603 /* blobs.fsh */,
+				93AF6C971B318A0D003FC314 /* dancing_box.fsh */,
+				93AF6C991B31923C003FC314 /* spectrum_wave.fsh */,
+				93AF6C9B1B319946003FC314 /* sinusoid.fsh */,
+				93AF6C9D1B31A4F7003FC314 /* eclipse.fsh */,
 			);
 			name = Shaders;
+			sourceTree = "<group>";
+		};
+		9363E61C1B381B75000E0884 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				9363E61D1B381BA8000E0884 /* DBLoginViewController.h */,
+				9363E61E1B381BA8000E0884 /* DBLoginViewController.m */,
+				9363E6231B38453B000E0884 /* DBPlayersTableViewController.h */,
+				9363E6241B38453B000E0884 /* DBPlayersTableViewController.m */,
+			);
+			name = ViewControllers;
+			sourceTree = "<group>";
+		};
+		93B1D8A41B37FFA9007C507B /* SocketIOClientSwift */ = {
+			isa = PBXGroup;
+			children = (
+				93B1D8A51B37FFA9007C507B /* SocketAckManager.swift */,
+				93B1D8A61B37FFA9007C507B /* SocketAnyEvent.swift */,
+				93B1D8A71B37FFA9007C507B /* SocketEngine.swift */,
+				93B1D8A81B37FFA9007C507B /* SocketEngineClient.swift */,
+				93B1D8A91B37FFA9007C507B /* SocketEventHandler.swift */,
+				93B1D8AA1B37FFA9007C507B /* SocketFixUTF8.swift */,
+				93B1D8AB1B37FFA9007C507B /* SocketIOClient.swift */,
+				93B1D8AC1B37FFA9007C507B /* SocketLogger.swift */,
+				93B1D8AD1B37FFA9007C507B /* SocketPacket.swift */,
+				93B1D8AE1B37FFA9007C507B /* SocketParser.swift */,
+				93B1D8AF1B37FFA9007C507B /* SocketTypes.swift */,
+				93B1D8B01B37FFA9007C507B /* SwiftRegex.swift */,
+				93B1D8B11B37FFA9007C507B /* WebSocket.swift */,
+			);
+			name = SocketIOClientSwift;
+			path = Libraries/SocketIOClientSwift;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -315,12 +393,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				93D1FCEB1B302749000A0603 /* galaxy.fsh in Resources */,
+				93AF6C9A1B31923C003FC314 /* spectrum_wave.fsh in Resources */,
 				9350127B1B3016640047D79A /* waves.fsh in Resources */,
 				93D1FCED1B3040F6000A0603 /* blobs.fsh in Resources */,
 				931B31391B28456D0054105C /* LaunchScreen.xib in Resources */,
 				931B31361B28456D0054105C /* Images.xcassets in Resources */,
+				93AF6C981B318A0D003FC314 /* dancing_box.fsh in Resources */,
+				93AF6C9E1B31A4F7003FC314 /* eclipse.fsh in Resources */,
 				931B312E1B28456D0054105C /* GameScene.sks in Resources */,
 				931B31341B28456D0054105C /* Main.storyboard in Resources */,
+				93AF6C9C1B319946003FC314 /* sinusoid.fsh in Resources */,
 				93D1FCE91B301F90000A0603 /* ether.fsh in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -342,15 +424,30 @@
 				931B31971B29614E0054105C /* LineSprite.m in Sources */,
 				931B319B1B29A4B80054105C /* DotNode.m in Sources */,
 				931B318E1B2867EF0054105C /* DotSprite.m in Sources */,
+				9363E61F1B381BA8000E0884 /* DBLoginViewController.m in Sources */,
 				935012781B2ED9EC0047D79A /* BoxNode.m in Sources */,
 				931B31311B28456D0054105C /* GameViewController.m in Sources */,
+				93B1D8B31B37FFA9007C507B /* SocketAnyEvent.swift in Sources */,
 				931B31291B28456D0054105C /* AppDelegate.m in Sources */,
+				93B1D8B21B37FFA9007C507B /* SocketAckManager.swift in Sources */,
 				931B312C1B28456D0054105C /* GameScene.m in Sources */,
+				93B1D8BE1B37FFA9007C507B /* WebSocket.swift in Sources */,
 				931B31541B28494D0054105C /* Dot.m in Sources */,
+				93B1D8BC1B37FFA9007C507B /* SocketTypes.swift in Sources */,
+				93B1D8B51B37FFA9007C507B /* SocketEngineClient.swift in Sources */,
+				93B1D8B91B37FFA9007C507B /* SocketLogger.swift in Sources */,
 				931B31911B2868070054105C /* BoardNode.m in Sources */,
+				93B1D8BB1B37FFA9007C507B /* SocketParser.swift in Sources */,
+				93B1D8B61B37FFA9007C507B /* SocketEventHandler.swift in Sources */,
 				931B31941B2961000054105C /* Line.m in Sources */,
+				93B1D8B41B37FFA9007C507B /* SocketEngine.swift in Sources */,
+				93B1D8BA1B37FFA9007C507B /* SocketPacket.swift in Sources */,
+				93B1D8B81B37FFA9007C507B /* SocketIOClient.swift in Sources */,
 				931B31261B28456D0054105C /* main.m in Sources */,
 				931B31511B2847B50054105C /* Board.m in Sources */,
+				93B1D8BD1B37FFA9007C507B /* SwiftRegex.swift in Sources */,
+				93B1D8B71B37FFA9007C507B /* SocketFixUTF8.swift in Sources */,
+				9363E6251B38453B000E0884 /* DBPlayersTableViewController.m in Sources */,
 				931B319E1B29BD080054105C /* LineNode.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

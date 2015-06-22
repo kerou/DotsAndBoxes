@@ -16,6 +16,7 @@
 @property(assign, nonatomic) NSUInteger allBoxes;
 @property(strong, nonatomic) NSMutableArray *dotNodes;
 @property(strong, nonatomic) SKShader *dotShader;
+@property(strong, nonatomic) SKShader *lineShader;
 @end
 
 @implementation BoardNode
@@ -34,8 +35,10 @@
         [LineSprite generatelineTextureWithSize:self.circleDiameter];
         
         // Shaders
-        self.dotShader = [SKShader shaderWithFileNamed:@"blobs.fsh"];
+        self.dotShader = [SKShader shaderWithFileNamed:@"eclipse.fsh"];
         [self.dotShader addUniform:[SKUniform uniformWithName:@"name" floatVector3:GLKVector3Make(self.circleDiameter, self.circleDiameter, 0)]];
+        self.lineShader = [SKShader shaderWithFileNamed:@"sinusoid.fsh"];
+//        [self.lineShader addUniform:[SKUniform uniformWithName:@"name" floatVector3:GLKVector3Make(self.circleDiameter, self.circleDiameter, 0)]];
 
         self.position = CGPointMake(self.circleDiameter/2, self.circleDiameter/2);
         
@@ -50,24 +53,26 @@
             [self.dotNodes addObject:currentRow];
         }
         
-        for (NSMutableArray *row in self.dotNodes) {
-            for (DotNode *dot in row) {
-                if (dot != [row lastObject]) {
-                    NSLog(@"%ld", [row indexOfObject:dot]);
-                    DotNode *secondDot = row[[row indexOfObject:dot]+1];
-                    LineNode *line = [[LineNode alloc] initWithPosition:dot.dotSprite.position size:dot.dotSize andOrientation:NO];
-                    line.dot = dot;
+        for (int rowIdx=0; rowIdx<self.dotNodes.count; rowIdx++) {
+            NSMutableArray *row = self.dotNodes[rowIdx];
+            for (int colIdx=0; colIdx<row.count; colIdx++) {
+                    DotNode *currentDot = row[colIdx];
+                if (colIdx < row.count - 1) {
+                    DotNode *secondDot = row[colIdx + 1];
+                    LineNode *line = [[LineNode alloc] initWithPosition:currentDot.dotSprite.position size:currentDot.dotSize andOrientation:NO];
+//                    line.lineSprite.shader = self.lineShader;
+                    line.dot = currentDot;
                     line.board = self;
-                    dot.rightLine = line;
+                    currentDot.rightLine = line;
                     secondDot.leftLine = line;
                     [self addChild:line];
                 }
-                if (row != [self.dotNodes lastObject]) {
-                    NSMutableArray *upperRow = self.dotNodes[[self.dotNodes indexOfObject:row] + 1];
-                    DotNode *upperDot = upperRow[[row indexOfObject:dot]];
-                    LineNode *line = [[LineNode alloc] initWithPosition:dot.dotSprite.position size:dot.dotSize andOrientation:YES];
-                    dot.upLine = line;
-                    line.dot = dot;
+                if (rowIdx < self.dotNodes.count - 1) {
+                    DotNode *upperDot = self.dotNodes[rowIdx + 1][colIdx];
+                    LineNode *line = [[LineNode alloc] initWithPosition:currentDot.dotSprite.position size:currentDot.dotSize andOrientation:YES];
+//                    line.lineSprite.shader = self.lineShader;
+                    currentDot.upLine = line;
+                    line.dot = currentDot;
                     line.board = self;
                     upperDot.downLine = line;
                     [self addChild:line];

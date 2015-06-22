@@ -27,4 +27,9 @@
 {
     return CGPointMake(4*self.column*self.dotSize, 4*self.row*self.dotSize);
 }
+
+- (BOOL)isEqual:(id)object
+{
+    return self.hash == [object hash];
+}
 @end

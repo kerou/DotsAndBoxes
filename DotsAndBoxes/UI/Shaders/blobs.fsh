@@ -9,8 +9,11 @@ float makePoint(float x,float y,float fx,float fy,float sx,float sy,float t){
 }
 
 void main( void ) {
+    vec2 center = (u_sprite_size) / length(u_sprite_size);
     vec4 val = texture2D(u_texture, v_tex_coord);
-    vec2 p=(gl_FragCoord.xy/u_sprite_size.x)*2.0-vec2(1.0,u_sprite_size.y/u_sprite_size.x);
+    float radius = center.x;
+    vec2 position = v_tex_coord - center;
+    vec2 p=(v_tex_coord.xy/center.x)*1.5-vec2(1.0,center.y/center.x);
     
     p=p*2.0;
     

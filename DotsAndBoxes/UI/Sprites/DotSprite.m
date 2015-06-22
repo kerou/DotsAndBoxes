@@ -25,40 +25,41 @@ static SKTexture *dotTexture;
 }
 
 
-+ (void)generateDotTextureWithSize:(CGFloat)size
-{
-    UIGraphicsBeginImageContext(CGSizeMake(size,size));
-    CGContextRef ctx = UIGraphicsGetCurrentContext();
-//    CGContextSetFillColorWithColor(ctx, [UIColor colorWithRed:.85 green:.84 blue:.83 alpha:1.0].CGColor);
-//    CGContextSetFillColorWithColor(ctx, [UIColor redColor].CGColor);
-    CGContextFillRect(ctx, CGRectMake(0,0,size,size));
-    CGRect holeRectIntersection = CGRectMake(0,0,size,size);
-    CGContextAddEllipseInRect(ctx, holeRectIntersection);
-    CGContextClip(ctx);
-    CGContextClearRect(ctx, holeRectIntersection);
-    CGContextSetFillColorWithColor(ctx, [UIColor clearColor].CGColor);
-    CGContextFillRect(ctx, holeRectIntersection);
-    
-//    CGContextSetFillColorWithColor(ctx, [UIColor clearColor].CGColor);
-//    CGContextFillEllipseInRect(ctx, CGRectMake(0,0, size,size));
-    UIImage *textureImage = UIGraphicsGetImageFromCurrentImageContext();
-    CGContextRelease(ctx);
-
-    dotTexture = [SKTexture textureWithImage:textureImage];
-}
-
 //+ (void)generateDotTextureWithSize:(CGFloat)size
 //{
 //    UIGraphicsBeginImageContext(CGSizeMake(size,size));
 //    CGContextRef ctx = UIGraphicsGetCurrentContext();
-//    CGContextSetFillColorWithColor(ctx, [UIColor clearColor].CGColor);
-//    //    CGContextFillRect(ctx, CGRectMake(0,0,4*size,size));
-//    CGContextFillEllipseInRect(ctx, CGRectMake(0,0, size,size));
-//    
+//////    CGContextSetFillColorWithColor(ctx, [UIColor colorWithRed:.85 green:.84 blue:.83 alpha:1.0].CGColor);
+//////    CGContextSetFillColorWithColor(ctx, [UIColor redColor].CGColor);
+////    CGContextFillRect(ctx, CGRectMake(0,0,size,size));
+////    CGRect holeRectIntersection = CGRectMake(0,0,size,size);
+////    CGContextAddEllipseInRect(ctx, holeRectIntersection);
+////    CGContextClip(ctx);
+////    CGContextClearRect(ctx, holeRectIntersection);
+////    CGContextSetFillColorWithColor(ctx, [UIColor whiteColor].CGColor);
+////    CGContextFillRect(ctx, holeRectIntersection);
+////    
+////    CGContextSetFillColorWithColor(ctx, [UIColor clearColor].CGColor);
+////    CGContextFillEllipseInRect(ctx, CGRectMake(0,0, size,size));
 //    UIImage *textureImage = UIGraphicsGetImageFromCurrentImageContext();
 //    CGContextRelease(ctx);
-//    
+//
 //    dotTexture = [SKTexture textureWithImage:textureImage];
 //}
+
++ (void)generateDotTextureWithSize:(CGFloat)size
+{
+    CGFloat textureSize = 4*size;
+    UIGraphicsBeginImageContext(CGSizeMake(textureSize, textureSize));
+    CGContextRef ctx = UIGraphicsGetCurrentContext();
+    CGContextSetFillColorWithColor(ctx, [UIColor darkGrayColor].CGColor);
+    //    CGContextFillRect(ctx, CGRectMake(0,0,4*size,size));
+    CGContextFillEllipseInRect(ctx, CGRectMake(0,0, textureSize, textureSize));
+    
+    UIImage *textureImage = UIGraphicsGetImageFromCurrentImageContext();
+    CGContextRelease(ctx);
+    
+    dotTexture = [SKTexture textureWithImage:textureImage];
+}
 
 @end

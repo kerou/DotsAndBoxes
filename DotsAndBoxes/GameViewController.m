@@ -55,25 +55,9 @@
     scene.backgroundColor = [UIColor whiteColor];
     
 
-    BoardNode *board = [[BoardNode alloc] initWithDimension:5 andBoardSize:scene.size];
+    BoardNode *board = [[BoardNode alloc] initWithDimension:0 andBoardSize:scene.size];
     board.isMe = YES;
-//    scene.backgroundColor = [UIColor colorWithRed:.85 green:.84 blue:.83 alpha:1.0];
-    
-//    SKSpriteNode *shaderSprite = [SKSpriteNode spriteNodeWithColor:[UIColor whiteColor] size:scene.size];
-//    shaderSprite.size = scene.size;
-////    shaderSprite.color = [UIColor whiteColor];
-////    shaderSprite.position = CGPointMake(0,0);
-//    SKShader* shader = [SKShader shaderWithFileNamed:@"blobs.fsh"];
-//    //Set vairiables that are used in the shader script
-//    shader.uniforms = @[
-//                        [SKUniform uniformWithName:@"size" floatVector3:GLKVector3Make(shaderSprite.size.width, shaderSprite.size.height, 0)],
-//                        ];
-//    //add the shader to the sprite
-//    shaderSprite.shader = shader;
-//    shaderSprite.blendMode = SKBlendModeSubtract;
-//    
-//    [board addChild:shaderSprite];
-    
+    scene.backgroundColor = [UIColor blackColor];
     
     [scene addChild:board];
     

@@ -14,9 +14,13 @@
 
 @implementation AppDelegate
 
++ (AppDelegate*)getInstance
+{
+    return (AppDelegate*)[[UIApplication sharedApplication] delegate];
+}
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    // Override point for customization after application launch.
+
     return YES;
 }
 
@@ -40,6 +44,30 @@
 
 - (void)applicationWillTerminate:(UIApplication *)application {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+}
+
+- (void)initializeSocket:(id)receiver
+{
+    SocketIOClient* socket = [[SocketIOClient alloc] initWithSocketURL:@"localhost:3001" options:nil];
+    
+    [socket on:@"connect" callback:^(NSArray* data, void (^ack)(NSArray*)) {
+        self.socket = socket;
+        [receiver setValue:socket forKey:@"socket"];
+    }];
+    
+    [socket on:@"didLogin" callback:^(NSArray * data, void (^ack)(NSArray*)) {
+        NSDictionary *didLoginDict = data[0];
+        self.userId = [didLoginDict[@"userId"] unsignedIntegerValue];
+        NSArray *players = didLoginDict[@"connectedUsers"];
+        [receiver setValue:players forKey:@"players"];
+    }];
+    
+//    [socket on:@"disconnect" callback:^(NSArray * data, void (^ack)(NSArray*)) {
+//        
+//    }];
+    
+
+    [socket connect];
 }
 
 @end
