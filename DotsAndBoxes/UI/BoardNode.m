@@ -9,6 +9,7 @@
 #import "BoardNode.h"
 #import "DotNode.h"
 #import "BoxNode.h"
+#import "AppDelegate.h" 
 
 @interface BoardNode()
 @property(assign, nonatomic) NSUInteger dimension;
@@ -24,6 +25,10 @@
 - (id)initWithDimension:(NSUInteger)dimension andBoardSize:(CGSize)boardSize;
 {
     if(self = [super init]) {
+        // Notification Center
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(playerCreatedLine:) name:@"bg.paperjam.dotsandboxes.playercreatedline" object:nil];
+        
+        
         self.dotNodes = [NSMutableArray new];
         self.dimension = dimension;
         self.boardSize = boardSize;
@@ -81,6 +86,11 @@
         }
     }
     return self;
+}
+
+- (void)dealloc
+{
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 - (void)setIsMe:(BOOL)isMe
@@ -161,5 +171,18 @@
     [self addChild:box];
     SKAction *fadeIn = [SKAction fadeInWithDuration:.2];
     [box runAction:fadeIn];
+}
+
+#pragma mark - NSNotificationCenter
+- (void)playerCreatedLine:(NSDictionary *)lineInfo
+{
+    NSUInteger row = [lineInfo[@"row"] integerValue];
+    NSUInteger col = [lineInfo[@"col"] integerValue];
+    BOOL isVertical = [lineInfo[@"isVertical"] boolValue];
+    
+    DotNode *dot = self.dotNodes[row][col];
+    LineNode *line = isVertical ? dot.downLine : dot.rightLine;
+    
+    line.connected = YES;
 }
 @end

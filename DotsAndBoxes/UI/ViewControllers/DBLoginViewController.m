@@ -9,13 +9,15 @@
 #import "DBLoginViewController.h"
 #import "DotsAndBoxes-Swift.h"
 #import "AppDelegate.h"
+#import "DBPlayersTableViewController.h"
 
 @interface DBLoginViewController ()
 @property (strong, nonatomic) NSDictionary *credentials;
 @property (strong, nonatomic) IBOutlet UITextField *userNameTextField;
 @property (strong, nonatomic) IBOutlet UITextField *passwordTextField;
+@property (strong, nonatomic) IBOutlet UILabel *chooseUserLabel;
 @property (strong, nonatomic) IBOutlet UIButton *loginButton;
-@property (strong, nonatomic) IBOutlet UIButton *registerButton;
+@property (strong, nonatomic) IBOutlet UIButton *disconnectButton;
 @property (strong, nonatomic) IBOutlet UIActivityIndicatorView *activityIndicator;
 @property (weak, nonatomic) SocketIOClient *socket;
 @property (strong, nonatomic) NSMutableArray *players;
@@ -33,10 +35,21 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    [self.loginButton setEnabled:NO];
-    [self.registerButton setEnabled:NO];
-    [self.activityIndicator startAnimating];
     [self.activityIndicator setHidesWhenStopped:YES];
+    [self.activityIndicator startAnimating];
+
+    if(!self.credentials) {
+        self.userNameTextField.hidden = NO;
+        self.chooseUserLabel.hidden = NO;
+        self.loginButton.hidden = NO;
+        self.disconnectButton.hidden = YES;
+    } else {
+        self.chooseUserLabel.hidden = YES;
+        self.userNameTextField.hidden = YES;
+        self.loginButton.hidden = NO;
+        self.disconnectButton.hidden = NO;
+        [self.activityIndicator stopAnimating];
+    }
 }
 
 - (void)didReceiveMemoryWarning {
@@ -44,21 +57,32 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (void)dealloc
+{
+    [self removeObserver:self forKeyPath:@"socket"];
+    [self removeObserver:self forKeyPath:@"players"];
+}
+
 - (IBAction)login:(id)sender {
-    if(![self.userNameTextField.text isEqualToString:@""] && ![self.passwordTextField.text isEqualToString:@""]) {
-        self.credentials = @{@"user" : self.userNameTextField.text, @"pass" : self.passwordTextField.text};
-        [self.socket emit:@"login" withItems:@[@{@"user" : self.credentials[@"user"], @"pass" : self.credentials[@"pass"]}]
-         ];
+    if(!self.credentials) {
+        if(![self.userNameTextField.text isEqualToString:@""] && ![self.passwordTextField.text isEqualToString:@""]) {
+            self.credentials = @{@"user" : self.userNameTextField.text};
+            [self.socket emit:@"login" withItems:@[@{@"user" : self.credentials[@"user"]}]];
+        }
+    } else {
+        [self.socket emit:@"getAvailablePlayers" withItems:@[[AppDelegate getInstance].userId]];
     }
 }
 - (IBAction)register:(id)sender {
-    [self.loginButton setEnabled:NO];
-    [self.registerButton setEnabled:NO];
-    [self.activityIndicator startAnimating];
-    [[AppDelegate getInstance] initializeSocket:self];
-    
-    
-//    [self.socket emit:@"disconnectUser" withItems:@[@{@"userId" : [NSNumber numberWithInteger:[AppDelegate getInstance].userId]}]];
+    [[AppDelegate getInstance] disconnect];
+    self.credentials = nil;
+    [UIView animateWithDuration:.5 animations:^{
+        self.userNameTextField.hidden = NO;
+        self.chooseUserLabel.hidden = NO;
+        self.loginButton.hidden = NO;
+        self.disconnectButton.hidden = YES;
+
+    }];    
 }
 
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
@@ -67,14 +91,25 @@
         if(self.socket) {
             NSLog(@"connection established");
             [self.loginButton setEnabled:YES];
-            [self.registerButton setEnabled:YES];
+            [self.disconnectButton setEnabled:YES];
             [self.activityIndicator stopAnimating];
         }
     }
     
     if([keyPath isEqualToString:@"players"]) {
-        NSLog(@"");
+        [self presentPlayersTableViewController];
     }
+}
+
+- (void)presentPlayersTableViewController
+{
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    UINavigationController *playersNavigationViewController = [storyboard instantiateViewControllerWithIdentifier:@"playerNavigationViewController"];
+    DBPlayersTableViewController *playerTableViewController = (DBPlayersTableViewController *)playersNavigationViewController.topViewController;
+    playerTableViewController.players = self.players;
+    [self presentViewController:playersNavigationViewController animated:YES completion:^{
+        
+    }];
 }
 
 

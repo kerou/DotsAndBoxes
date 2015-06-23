@@ -7,8 +7,10 @@
 //
 
 #import "AppDelegate.h"
+#import "GameViewController.h"
+#import "DBGameContainerViewController.h"
 
-@interface AppDelegate ()
+@interface AppDelegate () <UIAlertViewDelegate>
 
 @end
 
@@ -35,6 +37,7 @@
 }
 
 - (void)applicationWillEnterForeground:(UIApplication *)application {
+
     // Called as part of the transition from the background to the inactive state; here you can undo many of the changes made on entering the background.
 }
 
@@ -48,26 +51,103 @@
 
 - (void)initializeSocket:(id)receiver
 {
-    SocketIOClient* socket = [[SocketIOClient alloc] initWithSocketURL:@"localhost:3001" options:nil];
+    SocketIOClient* socket = [[SocketIOClient alloc] initWithSocketURL:@"192.168.25.85:3001" options:nil];
     
     [socket on:@"connect" callback:^(NSArray* data, void (^ack)(NSArray*)) {
-        self.socket = socket;
         [receiver setValue:socket forKey:@"socket"];
     }];
     
     [socket on:@"didLogin" callback:^(NSArray * data, void (^ack)(NSArray*)) {
         NSDictionary *didLoginDict = data[0];
-        self.userId = [didLoginDict[@"userId"] unsignedIntegerValue];
-        NSArray *players = didLoginDict[@"connectedUsers"];
+        self.userId = didLoginDict[@"userId"];
+        [socket emit:@"getAvailablePlayers" withItems:@[self.userId]];
+    }];
+    
+    [socket on:@"availablePlayers"callback:^(NSArray * data, void (^ ack)(NSArray *)) {
+        NSDictionary *availablePlayers = data[0];
+        NSArray *players = availablePlayers[@"availablePlayers"];
         [receiver setValue:players forKey:@"players"];
     }];
     
-//    [socket on:@"disconnect" callback:^(NSArray * data, void (^ack)(NSArray*)) {
-//        
-//    }];
+    [socket on:@"playRequest" callback:^(NSArray * data, void (^ ack)(NSArray*)) {
+        NSDictionary *dataDict = data[0];
+        self.opponentId = dataDict[@"requesterId"];
+        if(!self.gameRequestAlertView.visible) {
+            if(!self.isPlaying) {
+                self.boardSize = [dataDict[@"gameType"] unsignedIntegerValue];
+                NSString *message = [NSString stringWithFormat:@"Would you like to play a game?"];
+                self.gameRequestAlertView = [[UIAlertView alloc] initWithTitle:@"Play Request" message:message delegate:self cancelButtonTitle:@"NO" otherButtonTitles:@"OK", nil];
+                [self.gameRequestAlertView show];
+            } else {
+                [socket emit:@"denyGame" withItems:@[ @{@"opponentId" : self.opponentId}]];
+            }
+        }
+    }];
     
+    [socket on:@"gameDenied" callback:^(NSArray * data, void (^ ack)(NSArray*)) {
+        NSLog(@"Game Denied!");
+    }];
+    
+    [socket on:@"gameAccepted" callback:^(NSArray * data, void (^ ack)(NSArray *)) {
+        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+        DBGameContainerViewController *gameContainerViewController = [storyboard instantiateViewControllerWithIdentifier:@"gameContainerViewController"];
+        gameContainerViewController.boardSize = self.boardSize;
+        gameContainerViewController.isMe = NO;
+        //    [self.window.rootViewController addChildViewController:gameContainerViewController];
+        [self.window.rootViewController dismissViewControllerAnimated:NO completion:^{
+            [self.window.rootViewController presentViewController:gameContainerViewController animated:YES completion:^{
+                
+            }];
+        }];
+    }];
+    
+    [socket on:@"lineAdded" callback:^(NSArray * data, void (^ ack)(NSArray *)) {
+        NSDictionary *dataDict = data[0];
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"bg.paperjam.dotsandboxes.playercreatedline" object:dataDict];
+    }];
+
 
     [socket connect];
+    self.socket = socket;
 }
 
+- (void)disconnect
+{
+    [self.socket emit:@"disconnectUser" withItems:@[@{ @"userId" : self.userId}]];
+}
+
+- (void)denyGame
+{
+    [self.socket emit:@"denyGame" withItems:@[@{ @"opponentId" : self.opponentId}]];
+}
+
+#pragma mark - Alert View Delegate methods
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    NSLog(@"AlertView clicked button at index");
+    if(buttonIndex == 1) {
+        self.isPlaying = YES;
+        [self.socket emit:@"acceptGame" withItems:@[@{@"opponentId" : self.opponentId}]];
+        [self presentGameViewControllerWithSize:self.boardSize andTurn:YES];
+    } else if (buttonIndex == 0) {
+        NSLog(@"Cancel");
+        [self denyGame];
+    }
+}
+
+- (void)presentGameViewControllerWithSize:(NSUInteger)boardSize andTurn:(BOOL)isMe
+{
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    DBGameContainerViewController *gameContainerViewController = [storyboard instantiateViewControllerWithIdentifier:@"gameContainerViewController"];
+    gameContainerViewController.boardSize = boardSize;
+    gameContainerViewController.isMe = isMe;
+//    [self.window.rootViewController addChildViewController:gameContainerViewController];
+    [self.window.rootViewController dismissViewControllerAnimated:NO completion:^{
+        [self.window.rootViewController presentViewController:gameContainerViewController animated:YES completion:^{
+            
+        }];
+    }];
+
+
+}
 @end

@@ -20,5 +20,4 @@
 @property(assign, nonatomic) BOOL connected;
 
 - (id)initWithPosition:(CGPoint)position size:(CGFloat)lineSize andOrientation:(BOOL)isVertical;
-
 @end

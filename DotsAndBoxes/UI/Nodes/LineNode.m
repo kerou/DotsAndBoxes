@@ -43,7 +43,6 @@
             }
         }
     }
-    
 }
 
 - (void)setConnected:(BOOL)connected

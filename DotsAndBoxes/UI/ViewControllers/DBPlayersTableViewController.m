@@ -7,6 +7,8 @@
 //
 
 #import "DBPlayersTableViewController.h"
+#import "AppDelegate.h"
+#import "DBGameTypeViewController.h"
 
 @interface DBPlayersTableViewController ()
 
@@ -39,16 +41,50 @@
     return self.players.count;
 }
 
-/*
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:<#@"reuseIdentifier"#> forIndexPath:indexPath];
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"playerCell" forIndexPath:indexPath];
     
-    // Configure the cell...
+    NSDictionary *playerDict = self.players[indexPath.row];
+    cell.textLabel.text = playerDict[@"user"];
     
     return cell;
 }
-*/
 
+- (void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    UINavigationController *gameTypeNavigationViewController = [storyboard instantiateViewControllerWithIdentifier:@"gameTypeNavigationViewController"];
+    DBGameTypeViewController *gameTypeViewController = (DBGameTypeViewController *)gameTypeNavigationViewController.topViewController;
+    NSDictionary *playerDict = self.players[indexPath.row];
+    gameTypeViewController.opponentId = playerDict[@"userId"];
+    [self presentViewController:gameTypeNavigationViewController animated:YES completion:^{
+        [AppDelegate getInstance].isPlaying = YES;
+    }];
+
+}
+
+- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
+{
+    NSString *sectionName;
+    switch (section)
+    {
+        case 0:
+            sectionName = @"Available players";
+            break;
+        default:
+            sectionName = @"";
+            break;
+    }
+    return sectionName;
+}
+
+- (IBAction)backButtonPressed:(id)sender {
+    [self dismissViewControllerAnimated:YES completion:^{
+        [AppDelegate getInstance].isPlaying = NO;
+    }];
+}
+ 
 /*
 // Override to support conditional editing of the table view.
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {

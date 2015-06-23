@@ -11,4 +11,5 @@
 
 @interface GameViewController : UIViewController
 @property(assign, nonatomic) BOOL isMe;
+@property(assign, nonatomic) NSUInteger boardSize;
 @end

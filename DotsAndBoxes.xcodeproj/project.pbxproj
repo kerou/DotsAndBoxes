@@ -28,6 +28,8 @@
 		9350127B1B3016640047D79A /* waves.fsh in Resources */ = {isa = PBXBuildFile; fileRef = 9350127A1B3016640047D79A /* waves.fsh */; };
 		9363E61F1B381BA8000E0884 /* DBLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9363E61E1B381BA8000E0884 /* DBLoginViewController.m */; };
 		9363E6251B38453B000E0884 /* DBPlayersTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9363E6241B38453B000E0884 /* DBPlayersTableViewController.m */; };
+		9363E6281B39457B000E0884 /* DBGameTypeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9363E6271B39457B000E0884 /* DBGameTypeViewController.m */; };
+		9363E62B1B3973AC000E0884 /* DBGameContainerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9363E62A1B3973AC000E0884 /* DBGameContainerViewController.m */; };
 		93AF6C981B318A0D003FC314 /* dancing_box.fsh in Resources */ = {isa = PBXBuildFile; fileRef = 93AF6C971B318A0D003FC314 /* dancing_box.fsh */; };
 		93AF6C9A1B31923C003FC314 /* spectrum_wave.fsh in Resources */ = {isa = PBXBuildFile; fileRef = 93AF6C991B31923C003FC314 /* spectrum_wave.fsh */; };
 		93AF6C9C1B319946003FC314 /* sinusoid.fsh in Resources */ = {isa = PBXBuildFile; fileRef = 93AF6C9B1B319946003FC314 /* sinusoid.fsh */; };
@@ -101,6 +103,10 @@
 		9363E61E1B381BA8000E0884 /* DBLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DBLoginViewController.m; path = UI/ViewControllers/DBLoginViewController.m; sourceTree = "<group>"; };
 		9363E6231B38453B000E0884 /* DBPlayersTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DBPlayersTableViewController.h; path = UI/ViewControllers/DBPlayersTableViewController.h; sourceTree = "<group>"; };
 		9363E6241B38453B000E0884 /* DBPlayersTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DBPlayersTableViewController.m; path = UI/ViewControllers/DBPlayersTableViewController.m; sourceTree = "<group>"; };
+		9363E6261B39457B000E0884 /* DBGameTypeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DBGameTypeViewController.h; path = UI/ViewControllers/DBGameTypeViewController.h; sourceTree = "<group>"; };
+		9363E6271B39457B000E0884 /* DBGameTypeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DBGameTypeViewController.m; path = UI/ViewControllers/DBGameTypeViewController.m; sourceTree = "<group>"; };
+		9363E6291B3973AC000E0884 /* DBGameContainerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DBGameContainerViewController.h; path = UI/ViewControllers/DBGameContainerViewController.h; sourceTree = "<group>"; };
+		9363E62A1B3973AC000E0884 /* DBGameContainerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DBGameContainerViewController.m; path = UI/ViewControllers/DBGameContainerViewController.m; sourceTree = "<group>"; };
 		93AF6C971B318A0D003FC314 /* dancing_box.fsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; name = dancing_box.fsh; path = UI/Shaders/dancing_box.fsh; sourceTree = "<group>"; };
 		93AF6C991B31923C003FC314 /* spectrum_wave.fsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; name = spectrum_wave.fsh; path = UI/Shaders/spectrum_wave.fsh; sourceTree = "<group>"; };
 		93AF6C9B1B319946003FC314 /* sinusoid.fsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; name = sinusoid.fsh; path = UI/Shaders/sinusoid.fsh; sourceTree = "<group>"; };
@@ -287,6 +293,10 @@
 				9363E61E1B381BA8000E0884 /* DBLoginViewController.m */,
 				9363E6231B38453B000E0884 /* DBPlayersTableViewController.h */,
 				9363E6241B38453B000E0884 /* DBPlayersTableViewController.m */,
+				9363E6261B39457B000E0884 /* DBGameTypeViewController.h */,
+				9363E6271B39457B000E0884 /* DBGameTypeViewController.m */,
+				9363E6291B3973AC000E0884 /* DBGameContainerViewController.h */,
+				9363E62A1B3973AC000E0884 /* DBGameContainerViewController.m */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -423,8 +433,10 @@
 			files = (
 				931B31971B29614E0054105C /* LineSprite.m in Sources */,
 				931B319B1B29A4B80054105C /* DotNode.m in Sources */,
+				9363E62B1B3973AC000E0884 /* DBGameContainerViewController.m in Sources */,
 				931B318E1B2867EF0054105C /* DotSprite.m in Sources */,
 				9363E61F1B381BA8000E0884 /* DBLoginViewController.m in Sources */,
+				9363E6281B39457B000E0884 /* DBGameTypeViewController.m in Sources */,
 				935012781B2ED9EC0047D79A /* BoxNode.m in Sources */,
 				931B31311B28456D0054105C /* GameViewController.m in Sources */,
 				93B1D8B31B37FFA9007C507B /* SocketAnyEvent.swift in Sources */,
