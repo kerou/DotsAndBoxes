@@ -142,13 +142,28 @@
     DBGameContainerViewController *gameContainerViewController = [storyboard instantiateViewControllerWithIdentifier:@"gameContainerViewController"];
     gameContainerViewController.boardSize = boardSize;
     gameContainerViewController.isMe = isMe;
-//    [self.window.rootViewController addChildViewController:gameContainerViewController];
-    [self.window.rootViewController dismissViewControllerAnimated:NO completion:^{
+
+    NSLog(@"%@", self.window.rootViewController);
+    
+    if(self.window.rootViewController.presentedViewController) {
+        [self.window.rootViewController dismissViewControllerAnimated:NO completion:^{
+            [self.window.rootViewController presentViewController:gameContainerViewController animated:YES completion:^{
+                
+            }];
+        }];
+    } else {
         [self.window.rootViewController presentViewController:gameContainerViewController animated:YES completion:^{
             
         }];
-    }];
-
+    }
 
 }
+
+- (BOOL)isModal:(UIViewController *)vc
+{
+    return vc.presentingViewController.presentedViewController == vc
+    || (vc.navigationController != nil && vc.navigationController.presentingViewController.presentedViewController == vc.navigationController)
+    || [vc.tabBarController.presentingViewController isKindOfClass:[UITabBarController class]];
+}
+
 @end

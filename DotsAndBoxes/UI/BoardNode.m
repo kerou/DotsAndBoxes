@@ -176,9 +176,11 @@
     if (self.allyBoxCount > (self.allBoxes + 1)/2) {
         self.gameOverAlert = [[UIAlertView alloc] initWithTitle:@"Game Over" message:@"You Win!" delegate:self  cancelButtonTitle:@"Ok" otherButtonTitles:nil];
         [self.gameOverAlert show];
-    }
-    if (self.opponentBoxCount > (self.allBoxes + 1)/2) {
+    } else if (self.opponentBoxCount > (self.allBoxes + 1)/2) {
         self.gameOverAlert = [[UIAlertView alloc] initWithTitle:@"Game Over" message:@"You Lose!" delegate:self  cancelButtonTitle:@"Ok" otherButtonTitles:nil];
+        [self.gameOverAlert show];
+    } else if (self.allyBoxCount == self.opponentBoxCount && self.allyBoxCount + self.opponentBoxCount == self.allBoxes) {
+        self.gameOverAlert = [[UIAlertView alloc] initWithTitle:@"Game Over" message:@"Draw!" delegate:self  cancelButtonTitle:@"Ok" otherButtonTitles:nil];
         [self.gameOverAlert show];
     }
 }
@@ -201,6 +203,7 @@
 #pragma mark - Alert View Delegate Methods
 -(void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
 {
+    [AppDelegate getInstance].isPlaying = NO;
     [[NSNotificationCenter defaultCenter] postNotificationName:@"bg.paperjam.dotsandboxes.gameOver" object:nil];
 }
 @end
