@@ -7,17 +7,17 @@
 //
 
 #import "BoardNode.h"
-#import "DotNode.h"
-#import "BoxNode.h"
-#import "AppDelegate.h" 
 
-@interface BoardNode()
+
+@interface BoardNode() <UIAlertViewDelegate>
 @property(assign, nonatomic) NSUInteger dimension;
 @property(assign, nonatomic) CGFloat circleDiameter;
 @property(assign, nonatomic) NSUInteger allBoxes;
 @property(strong, nonatomic) NSMutableArray *dotNodes;
 @property(strong, nonatomic) SKShader *dotShader;
 @property(strong, nonatomic) SKShader *lineShader;
+
+@property(strong, nonatomic) UIAlertView *gameOverAlert;
 @end
 
 @implementation BoardNode
@@ -28,7 +28,7 @@
         // Notification Center
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(playerCreatedLine:) name:@"bg.paperjam.dotsandboxes.playercreatedline" object:nil];
         
-        
+                
         self.dotNodes = [NSMutableArray new];
         self.dimension = dimension;
         self.boardSize = boardSize;
@@ -147,9 +147,10 @@
     CGSize size = CGSizeMake(boxSize, boxSize);
     SKSpriteNode *box = nil;
     if(isMe) {
-        self.allyBoxCount +=1;
+        self.allyBoxCount ++;
         box = [SKSpriteNode spriteNodeWithColor:[UIColor colorWithRed:.87 green:.50 blue:.35 alpha:1.] size:size];
     } else {
+        self.opponentBoxCount++;
         box = [SKSpriteNode spriteNodeWithColor:[UIColor colorWithRed:.23 green:.62 blue:.73 alpha:1.] size:size];
     }
     
@@ -171,18 +172,35 @@
     [self addChild:box];
     SKAction *fadeIn = [SKAction fadeInWithDuration:.2];
     [box runAction:fadeIn];
+    
+    if (self.allyBoxCount > (self.allBoxes + 1)/2) {
+        self.gameOverAlert = [[UIAlertView alloc] initWithTitle:@"Game Over" message:@"You Win!" delegate:self  cancelButtonTitle:@"Ok" otherButtonTitles:nil];
+        [self.gameOverAlert show];
+    }
+    if (self.opponentBoxCount > (self.allBoxes + 1)/2) {
+        self.gameOverAlert = [[UIAlertView alloc] initWithTitle:@"Game Over" message:@"You Lose!" delegate:self  cancelButtonTitle:@"Ok" otherButtonTitles:nil];
+        [self.gameOverAlert show];
+    }
 }
 
 #pragma mark - NSNotificationCenter
-- (void)playerCreatedLine:(NSDictionary *)lineInfo
+- (void)playerCreatedLine:(NSNotification *)notification
 {
+    NSLog(@"Player Created Line");
+    NSDictionary *lineInfo = notification.object;
     NSUInteger row = [lineInfo[@"row"] integerValue];
-    NSUInteger col = [lineInfo[@"col"] integerValue];
+    NSUInteger col = [lineInfo[@"column"] integerValue];
     BOOL isVertical = [lineInfo[@"isVertical"] boolValue];
     
     DotNode *dot = self.dotNodes[row][col];
-    LineNode *line = isVertical ? dot.downLine : dot.rightLine;
-    
+    LineNode *line = isVertical ? dot.upLine : dot.rightLine;
+    line.lineSprite.isAlly = NO;
     line.connected = YES;
+}
+
+#pragma mark - Alert View Delegate Methods
+-(void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"bg.paperjam.dotsandboxes.gameOver" object:nil];
 }
 @end

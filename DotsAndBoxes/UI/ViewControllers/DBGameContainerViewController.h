@@ -13,4 +13,7 @@
 @property (assign,nonatomic) BOOL isMe;
 @property (assign, nonatomic) NSUInteger boardSize;
 @property (strong, nonatomic) GameViewController *gameViewController;
+
+- (void)gameOver;
+
 @end

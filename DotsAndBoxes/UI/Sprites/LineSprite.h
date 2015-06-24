@@ -9,7 +9,7 @@
 #import <SpriteKit/SpriteKit.h>
 
 @interface LineSprite : SKSpriteNode
-@property(assign, nonatomic) BOOL isMe;
+@property(assign, nonatomic) BOOL isAlly;
 + (void)generatelineTextureWithSize:(CGFloat)size;
 
 - (id)initWithSize:(CGFloat)dotSize;

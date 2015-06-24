@@ -32,6 +32,7 @@
 - (IBAction)play:(id)sender {
     [self.socket emit:@"requestPlay" withItems:@[@{ @"opponentId" : self.opponentId, @"gameType" : self.boardSize, @"requesterId" : [AppDelegate getInstance].userId}]];
     [AppDelegate getInstance].boardSize = [self.boardSize integerValue];
+    [AppDelegate getInstance].opponentId = self.opponentId;
 }
 
 - (void)viewDidLoad {

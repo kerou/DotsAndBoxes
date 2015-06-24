@@ -25,6 +25,9 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(gameOver) name:@"bg.paperjam.dotsandboxes.gameOver" object:nil];
+    
     GameViewController *gameViewController = [self.childViewControllers objectAtIndex:0];
     gameViewController.boardSize = self.boardSize;
     gameViewController.isMe = self.isMe;
@@ -35,6 +38,18 @@
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (void)dealloc
+{
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
+- (void)gameOver
+{
+    [self dismissViewControllerAnimated:YES completion:^{
+        
+    }];
 }
 
 /*

@@ -54,7 +54,7 @@
     
 
     BoardNode *board = [[BoardNode alloc] initWithDimension:self.boardSize andBoardSize:scene.size];
-//    board.isMe = YES;
+    board.isMe = self.isMe;
     scene.backgroundColor = [UIColor blackColor];
     
     [scene addChild:board];

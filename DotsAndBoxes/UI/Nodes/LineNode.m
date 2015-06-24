@@ -7,7 +7,9 @@
 //
 
 #import "LineNode.h"
+#import "DotNode.h"
 #import "BoardNode.h"
+
 @implementation LineNode
 
 - (id)initWithPosition:(CGPoint)position size:(CGFloat)lineSize andOrientation:(BOOL)isVertical;
@@ -34,12 +36,18 @@
     SKNode *touchedNode = [self nodeAtPoint:touchLocation];
     if ([touchedNode.parent isMemberOfClass:[LineNode class]]) {
         LineNode *lineNode = (LineNode *)touchedNode.parent;
-        if(!lineNode.connected) {
-            if(touchedNode.alpha == 0) {
-                lineNode.lineSprite.isMe = self.board.isMe;
-                lineNode.connected = YES; 
-                SKAction *fadeIn = [SKAction fadeInWithDuration:0.1];
-                [touchedNode runAction:fadeIn];
+        if(self.board.isMe) {
+            if(!lineNode.connected) {
+                if(touchedNode.alpha == 0) {
+                    lineNode.lineSprite.isAlly = YES;
+                    lineNode.connected = YES;
+                    DotNode *dot = lineNode.dot;
+                    NSNumber *dotRow = [NSNumber numberWithInteger:dot.row];
+                    NSNumber *dotColumn = [NSNumber numberWithInteger:dot.column];
+                    NSNumber *isVertical = lineNode.isVertical ? @1 : @0;
+                    NSLog(@"OpponentId: %@", [AppDelegate getInstance].opponentId);
+                    [[AppDelegate getInstance].socket emit:@"addLine" withItems:@[@{@"opponentId" : [AppDelegate getInstance].opponentId ,@"row" : dotRow, @"column" : dotColumn, @"isVertical" : isVertical}]];
+                }
             }
         }
     }
@@ -48,6 +56,10 @@
 - (void)setConnected:(BOOL)connected
 {
     _connected = connected;
+    if(connected) {
+        SKAction *fadeIn = [SKAction fadeInWithDuration:0.1];
+        [self.lineSprite runAction:fadeIn];
+    }
     [self.board lineNode:self didChangeState:YES];
 }
 

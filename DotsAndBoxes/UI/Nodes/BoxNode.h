@@ -7,7 +7,8 @@
 //
 
 #import <SpriteKit/SpriteKit.h>
-#import "LineNode.h"
+
+@class LineNode;
 
 @interface BoxNode : SKNode
 @property(weak, nonatomic) LineNode *left;

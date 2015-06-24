@@ -102,6 +102,7 @@
     }];
     
     [socket on:@"lineAdded" callback:^(NSArray * data, void (^ ack)(NSArray *)) {
+        NSLog(@"Line Added");
         NSDictionary *dataDict = data[0];
         [[NSNotificationCenter defaultCenter] postNotificationName:@"bg.paperjam.dotsandboxes.playercreatedline" object:dataDict];
     }];

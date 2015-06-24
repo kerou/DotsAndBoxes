@@ -8,9 +8,10 @@
 
 #import <SpriteKit/SpriteKit.h>
 #import "LineSprite.h"
-@class DotNode;
-@class BoardNode;
+#import "AppDelegate.h"
 
+@class BoardNode;
+@class DotNode;
 @interface LineNode : SKNode
 
 @property(weak, nonatomic) DotNode *dot;
