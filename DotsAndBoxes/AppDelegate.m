@@ -51,7 +51,7 @@
 
 - (void)initializeSocket:(id)receiver
 {
-    SocketIOClient* socket = [[SocketIOClient alloc] initWithSocketURL:@"192.168.25.85:3001" options:nil];
+    SocketIOClient* socket = [[SocketIOClient alloc] initWithSocketURL:@"http://www.harizanov.info:3001" options:nil];
     
     [socket on:@"connect" callback:^(NSArray* data, void (^ack)(NSArray*)) {
         [receiver setValue:socket forKey:@"socket"];

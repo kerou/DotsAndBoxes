@@ -64,6 +64,7 @@
 }
 
 - (IBAction)login:(id)sender {
+    [self.loginButton setEnabled:NO];
     if(!self.credentials) {
         if(![self.userNameTextField.text isEqualToString:@""] && ![self.passwordTextField.text isEqualToString:@""]) {
             self.credentials = @{@"user" : self.userNameTextField.text};
