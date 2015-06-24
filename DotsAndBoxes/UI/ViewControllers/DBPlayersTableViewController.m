@@ -18,7 +18,6 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
     
@@ -29,6 +28,12 @@
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (void)setPlayers:(NSMutableArray *)players
+{
+    _players = players;
+    [self.tableView reloadData];
 }
 
 #pragma mark - Table view data source
@@ -44,7 +49,7 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"playerCell" forIndexPath:indexPath];
-    
+    NSLog(@"Cell for row at index path");
     NSDictionary *playerDict = self.players[indexPath.row];
     cell.textLabel.text = playerDict[@"user"];
     

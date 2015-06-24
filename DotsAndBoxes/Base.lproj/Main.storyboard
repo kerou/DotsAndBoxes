@@ -271,7 +271,7 @@
                                 </connections>
                             </containerView>
                         </subviews>
-                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.95294117647058818" green="0.92941176470588238" blue="0.88627450980392153" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="ZDE-gi-f3M" firstAttribute="top" secondItem="bH4-Qd-GP7" secondAttribute="bottom" constant="50" id="Nwf-op-rxG"/>
                             <constraint firstAttribute="trailingMargin" secondItem="ZDE-gi-f3M" secondAttribute="trailing" constant="50" id="e5W-fz-fcH"/>

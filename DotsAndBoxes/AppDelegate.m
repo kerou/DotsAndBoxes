@@ -106,7 +106,10 @@
         NSDictionary *dataDict = data[0];
         [[NSNotificationCenter defaultCenter] postNotificationName:@"bg.paperjam.dotsandboxes.playercreatedline" object:dataDict];
     }];
-
+    
+//    [socket on:@"playerJoined" callback:^(NSArray * data, void (^ ack)(NSArray *)) {
+//        [self.socket emit:@"getAvailablePlayers" withItems:@[[AppDelegate getInstance].userId]];
+//    }];
 
     [socket connect];
     self.socket = socket;

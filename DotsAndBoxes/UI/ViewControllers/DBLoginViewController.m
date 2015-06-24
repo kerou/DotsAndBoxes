@@ -103,13 +103,18 @@
 
 - (void)presentPlayersTableViewController
 {
-    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-    UINavigationController *playersNavigationViewController = [storyboard instantiateViewControllerWithIdentifier:@"playerNavigationViewController"];
-    DBPlayersTableViewController *playerTableViewController = (DBPlayersTableViewController *)playersNavigationViewController.topViewController;
-    playerTableViewController.players = self.players;
-    [self presentViewController:playersNavigationViewController animated:YES completion:^{
-        
-    }];
+    if(!self.presentedViewController) {
+        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+        UINavigationController *playersNavigationViewController = [storyboard instantiateViewControllerWithIdentifier:@"playerNavigationViewController"];
+        DBPlayersTableViewController *playerTableViewController = (DBPlayersTableViewController *)playersNavigationViewController.topViewController;
+        playerTableViewController.players = self.players;
+        [self presentViewController:playersNavigationViewController animated:YES completion:^{
+            
+        }];
+    } else {
+        UINavigationController *nc = (UINavigationController*)self.presentedViewController;
+        [nc.topViewController setValue:self.players forKey:@"players"];
+    }
 }
 
 

@@ -25,7 +25,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
+    self.view.backgroundColor = [UIColor colorWithRed:.96 green:.94 blue:.91 alpha:1.0];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(gameOver) name:@"bg.paperjam.dotsandboxes.gameOver" object:nil];
     
     GameViewController *gameViewController = [self.childViewControllers objectAtIndex:0];

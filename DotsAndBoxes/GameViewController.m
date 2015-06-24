@@ -40,6 +40,7 @@
 {
     [super viewWillAppear:animated];
 
+    self.view.backgroundColor = [UIColor colorWithRed:.96 green:.94 blue:.91 alpha:1.0];
     // Configure the view.
     SKView * skView = (SKView *)self.view;
     skView.showsFPS = YES;
@@ -50,12 +51,11 @@
     // Create and configure the scene.
     GameScene *scene = [GameScene unarchiveFromFile:@"GameScene"];
     scene.size = skView.frame.size;
-    scene.backgroundColor = [UIColor whiteColor];
     
 
     BoardNode *board = [[BoardNode alloc] initWithDimension:self.boardSize andBoardSize:scene.size];
     board.isMe = self.isMe;
-    scene.backgroundColor = [UIColor blackColor];
+    scene.backgroundColor = [UIColor colorWithRed:.96 green:.94 blue:.91 alpha:1.0];
     
     [scene addChild:board];
     
